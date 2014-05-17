@@ -27,7 +27,10 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
+		<?php $this->widget('ext.redactor.ImperaviRedactorWidget',array(
+				"model"=>$model,
+				"attribute"=>'description',
+		)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
@@ -82,10 +85,28 @@
 	</div>
 
 	<div class="row">
+		<?php echo CHtml::label("Država",'country'); ?>
+		<?php
+		$list = CHtml::listData(State::model()->findAll(), 'id', 'name');
+		echo CHtml::dropDownList('country', '1', $list);
+		?>
+	</div>
+
+	<div class="row">
+		<?php echo CHtml::label("Region",'region'); ?>
+		<?php
+		$country = 1;
+		$list = CHtml::listData(Region::model()->findAllByAttributes(array("state_id"=>$country)), 'id', 'name');
+		echo CHtml::dropDownList('region', '1', $list);
+		?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'city_ptt'); ?>
 		<?php
-		$list = CHtml::listData(City::model()->findAll(), 'ptt', 'name');
-		echo CHtml::dropDownList('Ad[city_ptt]', $model, $list);
+		$region = 1;
+		$list = CHtml::listData(City::model()->findAllByAttributes(array('region_id' => $region)), 'ptt', 'name');
+		echo CHtml::dropDownList('Action[city_ptt]', $model, $list);
 		?>
 		<?php echo $form->error($model,'city_ptt'); ?>
 	</div>

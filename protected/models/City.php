@@ -32,7 +32,7 @@ class City extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('region_id', 'required'),
-			array('region_id', 'numerical', 'integerOnly'=>true),
+			array('region_id, ptt', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>120),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

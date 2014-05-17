@@ -26,8 +26,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'state_id'); ?>
-		<?php echo $form->textField($model,'state_id'); ?>
+		<?php echo $form->labelEx($model,'state_id');
+		$list = CHtml::listData(State::model()->findAll(), 'id', 'name');
+		echo CHtml::dropDownList('Region[state_id]', $model, $list); ?>
 		<?php echo $form->error($model,'state_id'); ?>
 	</div>
 

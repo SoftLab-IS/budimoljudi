@@ -2,13 +2,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `ljudi` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
-USE `ljudi` ;
+CREATE SCHEMA IF NOT EXISTS `budimoljudi` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+USE `budimoljudi` ;
 
 -- -----------------------------------------------------
--- Table `ljudi`.`user`
+-- Table `budimoljudi`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ljudi`.`user` (
+CREATE TABLE IF NOT EXISTS `budimoljudi`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
@@ -21,9 +21,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ljudi`.`state`
+-- Table `budimoljudi`.`state`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ljudi`.`state` (
+CREATE TABLE IF NOT EXISTS `budimoljudi`.`state` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(120) NULL,
   PRIMARY KEY (`id`))
@@ -31,9 +31,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ljudi`.`region`
+-- Table `budimoljudi`.`region`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ljudi`.`region` (
+CREATE TABLE IF NOT EXISTS `budimoljudi`.`region` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
   `state_id` INT NOT NULL,
@@ -41,16 +41,16 @@ CREATE TABLE IF NOT EXISTS `ljudi`.`region` (
   INDEX `fk_region_state1_idx` (`state_id` ASC),
   CONSTRAINT `fk_region_state1`
     FOREIGN KEY (`state_id`)
-    REFERENCES `ljudi`.`state` (`id`)
+    REFERENCES `budimoljudi`.`state` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ljudi`.`city`
+-- Table `budimoljudi`.`city`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ljudi`.`city` (
+CREATE TABLE IF NOT EXISTS `budimoljudi`.`city` (
   `ptt` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(120) NULL,
   `region_id` INT NOT NULL,
@@ -58,16 +58,16 @@ CREATE TABLE IF NOT EXISTS `ljudi`.`city` (
   INDEX `fk_city_region1_idx` (`region_id` ASC),
   CONSTRAINT `fk_city_region1`
     FOREIGN KEY (`region_id`)
-    REFERENCES `ljudi`.`region` (`id`)
+    REFERENCES `budimoljudi`.`region` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ljudi`.`action`
+-- Table `budimoljudi`.`action`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ljudi`.`action` (
+CREATE TABLE IF NOT EXISTS `budimoljudi`.`action` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NULL,
   `time_start` TIMESTAMP NULL,
@@ -81,21 +81,21 @@ CREATE TABLE IF NOT EXISTS `ljudi`.`action` (
   INDEX `fk_action_city1_idx` (`city_ptt` ASC),
   CONSTRAINT `fk_action_user`
     FOREIGN KEY (`user_id`)
-    REFERENCES `ljudi`.`user` (`id`)
+    REFERENCES `budimoljudi`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_action_city1`
     FOREIGN KEY (`city_ptt`)
-    REFERENCES `ljudi`.`city` (`ptt`)
+    REFERENCES `budimoljudi`.`city` (`ptt`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ljudi`.`help`
+-- Table `budimoljudi`.`help`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ljudi`.`help` (
+CREATE TABLE IF NOT EXISTS `budimoljudi`.`help` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `time` VARCHAR(45) NULL,
   `types` VARCHAR(255) NULL,
@@ -107,21 +107,21 @@ CREATE TABLE IF NOT EXISTS `ljudi`.`help` (
   INDEX `fk_help_city1_idx` (`city_ptt` ASC),
   CONSTRAINT `fk_help_user1`
     FOREIGN KEY (`user_id`)
-    REFERENCES `ljudi`.`user` (`id`)
+    REFERENCES `budimoljudi`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_help_city1`
     FOREIGN KEY (`city_ptt`)
-    REFERENCES `ljudi`.`city` (`ptt`)
+    REFERENCES `budimoljudi`.`city` (`ptt`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ljudi`.`post`
+-- Table `budimoljudi`.`post`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ljudi`.`post` (
+CREATE TABLE IF NOT EXISTS `budimoljudi`.`post` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NULL,
   `content` TEXT NULL,
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `ljudi`.`post` (
   INDEX `fk_post_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_post_user1`
     FOREIGN KEY (`user_id`)
-    REFERENCES `ljudi`.`user` (`id`)
+    REFERENCES `budimoljudi`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
