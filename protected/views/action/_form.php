@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Polja sa <span class="required">*</span> su obavezna.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -26,43 +26,72 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'time_start'); ?>
-		<?php echo $form->textField($model,'time_start'); ?>
-		<?php echo $form->error($model,'time_start'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
-		<?php echo $form->error($model,'user_id'); ?>
+		<?php echo $form->labelEx($model,'time_start');
+		$this->widget('zii.widgets.jui.CJuiDatePicker',array(
+		'name'=>'WorkAccounts[time_start]',
+		'id'=>'WorkAccounts_time_start',
+		// additional javascript options for the date picker plugin
+		'options'=>array(
+		'showAnim'=>'fade',
+		'dayNamesMin'=> array('Ned' ,'Pon', 'Uto', 'Sre', 'Čet', 'Pet', 'Sub'),
+		'dateFormat'=>"dd.mm.yy",
+		'firstDay'=>1,
+		'monthNames'=>array('Januar', 'Februar', 'Mart', 'April', 'Maj', 'Juni', 'Juli', 'August', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'),
+		'monthNamesShort'=>array('Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'),
+		'changeMonth'=>true,
+		'changeYear'=>true
+		),
+		'htmlOptions'=>array(
+		'style'=>'height:2.3125rem;',
+		'required' =>'required',
+		),
+		));
+		?>
+		<?php echo $form->error($model,'time_start'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'time_end'); ?>
-		<?php echo $form->textField($model,'time_end'); ?>
+		<?php echo $form->labelEx($model,'time_end');
+		$this->widget('zii.widgets.jui.CJuiDatePicker',array(
+		'name'=>'WorkAccounts[time_end]',
+		'id'=>'WorkAccounts_time_end',
+		// additional javascript options for the date picker plugin
+		'options'=>array(
+		'showAnim'=>'fade',
+		'dayNamesMin'=> array('Ned' ,'Pon', 'Uto', 'Sre', 'Čet', 'Pet', 'Sub'),
+		'dateFormat'=>"dd.mm.yy",
+		'firstDay'=>1,
+		'monthNames'=>array('Januar', 'Februar', 'Mart', 'April', 'Maj', 'Juni', 'Juli', 'August', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'),
+		'monthNamesShort'=>array('Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'),
+		'changeMonth'=>true,
+		'changeYear'=>true
+		),
+		'htmlOptions'=>array(
+		'style'=>'height:2.3125rem;',
+		'required' =>'required',
+		),
+		));
+		?>
 		<?php echo $form->error($model,'time_end'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'city_ptt'); ?>
-		<?php echo $form->textField($model,'city_ptt'); ?>
+		<?php
+		$list = CHtml::listData(City::model()->findAll(), 'ptt', 'name');
+		echo CHtml::dropDownList('Ad[city_ptt]', $model, $list);
+		?>
 		<?php echo $form->error($model,'city_ptt'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'number_of_participants'); ?>
-		<?php echo $form->textField($model,'number_of_participants'); ?>
-		<?php echo $form->error($model,'number_of_participants'); ?>
-	</div>
-
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Kreiraj' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
