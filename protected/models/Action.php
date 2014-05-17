@@ -65,12 +65,12 @@ class Action extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'time_start' => 'Time Start',
-			'description' => 'Description',
+			'title' => 'Naslov',
+			'time_start' => 'Vrijeme početka',
+			'description' => 'Opis Akcije',
 			'user_id' => 'User',
-			'time_end' => 'Time End',
-			'city_ptt' => 'City Ptt',
+			'time_end' => 'Vrijeme završetka',
+			'city_ptt' => 'Grad',
 			'number_of_participants' => 'Number Of Participants',
 		);
 	}
