@@ -89,7 +89,7 @@
         <?php
         $region = 1;
         $list = CHtml::listData(City::model()->findAllByAttributes(array('region_id' => $region)), 'ptt', 'name');
-        echo CHtml::dropDownList('Action[city_ptt]', $model, $list, array('class'=>'form-control'));
+        echo CHtml::dropDownList('Help[city_ptt]', $model, $list, array('class'=>'form-control'));
         ?>
         <?php echo $form->error($model,'city_ptt', array('class'=>'alert alert-danger')); ?>
     </div>

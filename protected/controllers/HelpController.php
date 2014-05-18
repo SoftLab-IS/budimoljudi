@@ -68,7 +68,15 @@ class HelpController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		if(isset($_POST['User']))
+		{
+			$userModel->attributes = $_POST['User'];
+			$userModel->password = md5($_POST['User']['password']);
+		}
+		if($userModel->save())
+			$korisnik = $userModel->id;
+		else
+			$korisnik = Yii::app()->session['id'];
 		if(isset($_POST['Help']))
 		{
             foreach($_POST['type'] as $oneType)
@@ -76,6 +84,8 @@ class HelpController extends Controller
                 $model->types .= $oneType;
             }
 			$model->attributes=$_POST['Help'];
+			$model->user_id = $korisnik;
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

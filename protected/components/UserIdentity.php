@@ -17,17 +17,21 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
-			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($users[$this->username]!==$this->password)
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		$user = User::model()->getUser($this->username, $this->password);
+
+		if ($user == null)
+		{
+			$this->errorCode = self::ERROR_PASSWORD_INVALID;
+			return false;
+		}
 		else
-			$this->errorCode=self::ERROR_NONE;
-		return !$this->errorCode;
+		{
+			Yii::app()->session['id'] = $user->id;
+			Yii::app()->session['level'] = $user->type;
+			Yii::app()->session['fullname'] = $user->name;
+
+			$this->errorCode = self::ERROR_NONE;
+			return true;
+		}
 	}
 }

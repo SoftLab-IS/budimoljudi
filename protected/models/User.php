@@ -114,4 +114,13 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function getUser($email, $password)
+	{
+		return $this->findByAttributes(
+			array(
+				"email" => $email,
+				"password" => md5($password),
+			));
+	}
 }
