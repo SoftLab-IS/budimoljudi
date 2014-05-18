@@ -62,6 +62,7 @@ class HelpController extends Controller
 	 */
 	public function actionCreate()
 	{
+		$this->layout = 'main';
 		$model=new Help;
 
 		// Uncomment the following line if AJAX validation is needed

@@ -112,4 +112,14 @@ class SiteController extends Controller
 		$this->layout = "admin";
 		$this->render('admin');
 	}
+
+	public function actionVijesti()
+	{
+		$this->render('vijesti');
+	}
+
+	public function actionVazne_informacije()
+	{
+		$this->render('vazne_informacije');
+	}
 }

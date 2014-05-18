@@ -122,6 +122,7 @@ class ActionController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$this->layout = 'main';
 		$dataProvider=new CActiveDataProvider('Action');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,

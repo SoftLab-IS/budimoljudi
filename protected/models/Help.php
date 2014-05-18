@@ -64,11 +64,11 @@ class Help extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'time' => 'Time',
-			'types' => 'Types',
-			'description' => 'Description',
+			'time' => 'Vrijeme',
+			'types' => 'Tip pomoći',
+			'description' => 'Napomena',
 			'user_id' => 'User',
-			'city_ptt' => 'City Ptt',
+			'city_ptt' => 'Grad',
 		);
 	}
 
