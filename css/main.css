@@ -125,7 +125,12 @@ body {
     margin-bottom: .5rem;
 }
 
-
+article h3 em {
+    display: block;
+    color: #666;
+    font-size: .7rem;
+    padding-top: .2rem;
+}
 
 
 

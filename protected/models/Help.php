@@ -37,7 +37,7 @@ class Help extends CActiveRecord
 			array('user_id, city_ptt', 'numerical', 'integerOnly'=>true),
 			array('time', 'length', 'max'=>45),
 			array('types', 'length', 'max'=>255),
-			array('description', 'safe'),
+			array('description, type', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, time, types, description, user_id, city_ptt', 'safe', 'on'=>'search'),

@@ -48,6 +48,7 @@
     <br/>
     <h3>Vrsta pomoći</h3>
     <div class="col-md-12">
+        <?php echo $form->error($model,'type'); ?>
         <label class="checkbox">
             <input type="checkbox" name="type[]" value="smjestaj"/>Smještaj
         </label>

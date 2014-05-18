@@ -79,10 +79,18 @@ class HelpController extends Controller
 			$korisnik = Yii::app()->session['id'];
 		if(isset($_POST['Help']))
 		{
-            foreach($_POST['type'] as $oneType)
+            if(isset($_POST['type']))
             {
-                $model->types .= $oneType;
+                foreach($_POST['type'] as $oneType)
+                {
+                    $model->types .= $oneType;
+                }
             }
+            else
+            {
+                $model->addError('type', "Trebate izabrati barem jedan tip pomoci");
+            }
+
 			$model->attributes=$_POST['Help'];
 			$model->user_id = $korisnik;
 
