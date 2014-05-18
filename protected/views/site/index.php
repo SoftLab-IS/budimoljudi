@@ -11,49 +11,7 @@ $this->pageTitle=Yii::app()->name;
 </div>
 
 <div class="col-md-7">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			Akcije
-		</div>
-
-		<table class="table">
-			<tr>
-				<th>#</th>
-				<th>Naziv akcije</th>
-				<th>Lokacija</th>
-				<th>Početak akcije</th>
-				<th>&nbsp;</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Akcija prikupljanja pomoci</td>
-				<td>Vojkovici 1</td>
-				<td>17.05.2014. u 09:00</td>
-				<td><a class="btn btn-success" href="#">Priključi se akciji</a></td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>Akcija prikupljanja pomoci</td>
-				<td>Vojkovici 1</td>
-				<td>17.05.2014. u 09:00</td>
-				<td><a class="btn btn-success" href="#">Priključi se akciji</a></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Akcija prikupljanja pomoci</td>
-				<td>Vojkovici 1</td>
-				<td>17.05.2014. u 09:00</td>
-				<td><a class="btn btn-success" href="#">Priključi se akciji</a></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>Akcija prikupljanja pomoci</td>
-				<td>Vojkovici 1</td>
-				<td>17.05.2014. u 09:00</td>
-				<td><a class="btn btn-success" href="#">Priključi se akciji</a></td>
-			</tr>
-		</table>
-	</div>
+	<?php $this->renderPartial('_akcije', array('model'=>$akcije)); ?>
 </div>
 
 <div class="col-md-5">
