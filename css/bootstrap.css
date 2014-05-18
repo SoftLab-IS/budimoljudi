@@ -2343,6 +2343,7 @@ fieldset[disabled] .btn-link:focus {
   width: 100%;
   padding-right: 0;
   padding-left: 0;
+  background:black;
 }
 .btn-block + .btn-block {
   margin-top: 5px;
