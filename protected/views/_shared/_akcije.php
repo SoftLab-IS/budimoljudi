@@ -20,7 +20,7 @@
 					<td><?php echo $akcija->title; ?></td>
 					<td><?php echo City::getCityName($akcija->city_ptt); ?></td>
 					<td><?php echo date('d.m.Y. \u h:m<\s\u\p>\h</\s\u\p>',strtotime($akcija->time_start)); ?></td>
-					<td><a class="btn btn-success" href="#">Priključi se</a></td>
+					<td><?php echo CHtml::link('Priključi se', array('action/view','id'=>$akcija->id), array('class'=>'btn btn-success')); ?></td>
 				</tr>
 			<?php endif; ?>
 		<?php endforeach; ?>

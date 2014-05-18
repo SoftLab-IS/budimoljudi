@@ -11,7 +11,7 @@ $this->pageTitle=Yii::app()->name;
 </div>
 
 <div class="col-md-7">
-	<?php $this->renderPartial('_akcije', array('model'=>$akcije)); ?>
+	<?php $this->renderPartial('//_shared/_akcije', array('model'=>$akcije)); ?>
 </div>
 
 <div class="col-md-5">
@@ -19,13 +19,14 @@ $this->pageTitle=Yii::app()->name;
 		<div class="panel-heading">
 			Vijesti
 		</div>
-		<div class="panel-body">
-			<p>fdg
-				dfg
-				sd
-				f
-				gsd</p>
-		</div>
+		<table class="table">
+			<?php $i=1; foreach($vijesti as $vijest): ?>
+					<tr>
+						<td class="col-md-2"><?php echo date('d.m.Y.',strtotime($vijest->date)); ?></td>
+						<td><?php echo CHtml::link($vijest->title, array('post/view','id'=>$vijest->id)); ?></td>
+					</tr>
+			<?php endforeach; ?>
+		</table>
 	</div>
 </div>
 

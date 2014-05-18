@@ -29,9 +29,11 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$akcije=Action::model()->findAll(array('order'=>'id DESC'));
+		$akcije = Action::model()->findAll(array('order'=>'id DESC'));
+		$vijesti = Post::model()->findAll(array('order'=>'id DESC'));
 		$this->render('index',array(
 			'akcije' => $akcije,
+			'vijesti' => $vijesti,
 		));
 	}
 

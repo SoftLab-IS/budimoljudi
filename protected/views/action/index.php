@@ -8,7 +8,7 @@
 </div>
 
 <div class="col-md-8">
-	<?php $this->renderPartial('_akcije', array('model'=>$model)); ?>
+	<?php $this->renderPartial('//_shared/_akcije', array('model'=>$model)); ?>
 </div>
 
 <div class="col-md-4">
