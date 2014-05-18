@@ -115,7 +115,9 @@ class SiteController extends Controller
 
 	public function actionVijesti()
 	{
-		$this->render('vijesti');
+		$model = Post::model()->findAll(array('order'=>'id DESC'));
+
+		$this->render('vijesti',array('model'=>$model));
 	}
 
 	public function actionVazne_informacije()
