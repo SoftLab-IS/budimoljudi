@@ -115,8 +115,15 @@ body {
     margin-top: 2rem;
     margin-bottom: 3rem;
 }
-
-
+.form-wrapper h3 {
+     margin: 1.5rem 0 1rem;
+}
+.form-wrapper .buttons {
+    margin: 1.5rem 0 1rem;
+}
+.form-control {
+    margin-bottom: .5rem;
+}
 
 
 

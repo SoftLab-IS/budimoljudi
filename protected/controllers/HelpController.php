@@ -64,12 +64,17 @@ class HelpController extends Controller
 	{
 		$this->layout = 'main';
 		$model=new Help;
+        $userModel = new User;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Help']))
 		{
+            foreach($_POST['type'] as $oneType)
+            {
+                $model->types .= $oneType;
+            }
 			$model->attributes=$_POST['Help'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -77,6 +82,7 @@ class HelpController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+            'userModel'=>$userModel,
 		));
 	}
 

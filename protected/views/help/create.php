@@ -3,6 +3,13 @@
 /* @var $model Help */
 ?>
 
-<h1>Kreiraj pomoć</h1>
+<div class="col-md-12">
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    <hgroup>
+        <h2>Ponudi pomoć</h2>
+        <h3>Opis nudjenja pomoci</h3>
+    </hgroup>
+
+<?php $this->renderPartial('_form', array('model'=>$model, 'userModel'=>$userModel)); ?>
+
+</div>
