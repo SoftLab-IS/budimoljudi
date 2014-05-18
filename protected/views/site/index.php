@@ -11,49 +11,7 @@ $this->pageTitle=Yii::app()->name;
 </div>
 
 <div class="col-md-7">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			Akcije
-		</div>
-
-		<table class="table">
-			<tr>
-				<th>#</th>
-				<th>Naziv akcije</th>
-				<th>Lokacija</th>
-				<th>Početak akcije</th>
-				<th>&nbsp;</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Akcija prikupljanja pomoci</td>
-				<td>Vojkovici 1</td>
-				<td>17.05.2014. u 09:00</td>
-				<td><a class="btn btn-success" href="#">Priključi se akciji</a></td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>Akcija prikupljanja pomoci</td>
-				<td>Vojkovici 1</td>
-				<td>17.05.2014. u 09:00</td>
-				<td><a class="btn btn-success" href="#">Priključi se akciji</a></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Akcija prikupljanja pomoci</td>
-				<td>Vojkovici 1</td>
-				<td>17.05.2014. u 09:00</td>
-				<td><a class="btn btn-success" href="#">Priključi se akciji</a></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>Akcija prikupljanja pomoci</td>
-				<td>Vojkovici 1</td>
-				<td>17.05.2014. u 09:00</td>
-				<td><a class="btn btn-success" href="#">Priključi se akciji</a></td>
-			</tr>
-		</table>
-	</div>
+	<?php $this->renderPartial('//_shared/_akcije', array('model'=>$akcije)); ?>
 </div>
 
 <div class="col-md-5">
@@ -61,13 +19,14 @@ $this->pageTitle=Yii::app()->name;
 		<div class="panel-heading">
 			Vijesti
 		</div>
-		<div class="panel-body">
-			<p>fdg
-				dfg
-				sd
-				f
-				gsd</p>
-		</div>
+		<table class="table">
+			<?php $i=1; foreach($vijesti as $vijest): ?>
+					<tr>
+						<td class="col-md-2"><?php echo date('d.m.Y.',strtotime($vijest->date)); ?></td>
+						<td><?php echo CHtml::link($vijest->title, array('post/view','id'=>$vijest->id)); ?></td>
+					</tr>
+			<?php endforeach; ?>
+		</table>
 	</div>
 </div>
 

@@ -51,6 +51,7 @@ class ActionController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$this->layout = 'main';
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -62,6 +63,7 @@ class ActionController extends Controller
 	 */
 	public function actionCreate()
 	{
+		$this->layout = 'main';
 		$model=new Action;
 
 		// Uncomment the following line if AJAX validation is needed
@@ -123,9 +125,9 @@ class ActionController extends Controller
 	public function actionIndex()
 	{
 		$this->layout = 'main';
-		$dataProvider=new CActiveDataProvider('Action');
+		$dataProvider=Action::model()->findAll(array('order'=>'id DESC'));
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$dataProvider,
 		));
 	}
 

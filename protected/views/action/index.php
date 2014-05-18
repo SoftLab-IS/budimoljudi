@@ -1,6 +1,6 @@
 <?php
 /* @var $this ActionController */
-/* @var $dataProvider CActiveDataProvider */
+/* @var $model Action */
 ?>
 
 <div class="col-md-12">
@@ -8,53 +8,7 @@
 </div>
 
 <div class="col-md-8">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="">
-                Najavljene akcije
-            </div>
-
-
-        </div>
-
-        <table class="table">
-            <tr>
-                <th>#</th>
-                <th>Naziv akcije</th>
-                <th>Lokacija</th>
-                <th>Početak akcije</th>
-                <th>&nbsp;</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Akcija prikupljanja pomoci</td>
-                <td>Vojkovici 1</td>
-                <td>17.05.2014. u 09:00</td>
-                <td><a class="btn btn-success" href="#">Priključi se</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Akcija prikupljanja pomoci</td>
-                <td>Vojkovici 1</td>
-                <td>17.05.2014. u 09:00</td>
-                <td><a class="btn btn-success" href="#">Priključi se</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Akcija prikupljanja pomoci</td>
-                <td>Vojkovici 1</td>
-                <td>17.05.2014. u 09:00</td>
-                <td><a class="btn btn-success" href="#">Priključi se</a></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Akcija prikupljanja pomoci</td>
-                <td>Vojkovici 1</td>
-                <td>17.05.2014. u 09:00</td>
-                <td><a class="btn btn-success" href="#">Priključi se</a></td>
-            </tr>
-        </table>
-    </div>
+	<?php $this->renderPartial('//_shared/_akcije', array('model'=>$model)); ?>
 </div>
 
 <div class="col-md-4">
@@ -62,12 +16,16 @@
         <div class="panel-heading">
             Završene akcije
         </div>
-        <div class="panel-body">
-            <p>fdg
-                dfg
-                sd
-                f
-                gsd</p>
-        </div>
+	    <table class="table">
+		    <?php $i=1; foreach($model as $akcija): ?>
+			    <?php if(strtotime(date('Y-m-d h:m:s'))>strtotime($akcija->time_end)): ?>
+				    <tr>
+					    <td><?php echo $i++; ?></td>
+					    <td><?php echo $akcija->title; ?></td>
+					    <td><?php echo City::getCityName($akcija->city_ptt); ?></td>
+				    </tr>
+			    <?php endif; ?>
+		    <?php endforeach; ?>
+	    </table>
     </div>
 </div>

@@ -51,6 +51,7 @@ class PostController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$this->layout = 'main';
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));

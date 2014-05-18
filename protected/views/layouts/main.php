@@ -33,7 +33,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="<?php echo Yii::app()->baseUrl; ?>">Budimo Ljudi</a>
+				<a class="navbar-brand logo" href="<?php echo Yii::app()->getBaseUrl(true); ?>">Budimo Ljudi</a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<?php $this->widget('zii.widgets.CMenu',array(
