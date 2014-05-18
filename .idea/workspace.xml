@@ -2,22 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81a02333-4b8a-436a-965b-6e95ec98e07d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ponudi-pomoc.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/.classpath" afterPath="$PROJECT_DIR$/BudimoLjudi/.classpath" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.project" afterPath="$PROJECT_DIR$/.project" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/.project" afterPath="$PROJECT_DIR$/BudimoLjudi/.project" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/AndroidManifest.xml" afterPath="$PROJECT_DIR$/BudimoLjudi/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/bin/AndroidManifest.xml" afterPath="$PROJECT_DIR$/BudimoLjudi/bin/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/bin/R.txt" afterPath="$PROJECT_DIR$/BudimoLjudi/bin/R.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/BudimoLjudi/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/.settings/org.eclipse.jdt.core.prefs" afterPath="$PROJECT_DIR$/BudimoLjudi/.settings/org.eclipse.jdt.core.prefs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/res/values/strings.xml" afterPath="$PROJECT_DIR$/BudimoLjudi/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/res/values/styles.xml" afterPath="$PROJECT_DIR$/BudimoLjudi/res/values/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/res/values-v11/styles.xml" afterPath="$PROJECT_DIR$/BudimoLjudi/res/values-v11/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BudimoLjudi/res/values-v14/styles.xml" afterPath="$PROJECT_DIR$/BudimoLjudi/res/values-v14/styles.xml" />
+      <change type="DELETED" beforePath="D:\xampp\htdocs\budimoljudi\protected\controllers\SiteController.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\xampp\htdocs\budimoljudi\protected\models\City.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\xampp\htdocs\budimoljudi\protected\views\action\_form.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\xampp\htdocs\budimoljudi\protected\views\city\_form.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\xampp\htdocs\budimoljudi\protected\views\layouts\column2.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\xampp\htdocs\budimoljudi\protected\views\region\_form.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\xampp\htdocs\budimoljudi\resursi\ljudi.sql" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ponudi-pomoc.html" afterPath="$PROJECT_DIR$/ponudi-pomoc.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\.classpath" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/.classpath" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\.project" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/.project" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\.settings\org.eclipse.jdt.core.prefs" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\AndroidManifest.xml" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/AndroidManifest.xml" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\AndroidManifest.xml" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/AndroidManifest.xml" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\BudimoLjud.apk" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/BudimoLjud.apk" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\R.txt" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/R.txt" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\classes.dex" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/classes.dex" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\classes\.gitignore" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/classes/.gitignore" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\dexedLibs\android-support-v4-ab4914064794ecc818b60e5d625ee018.jar" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/dexedLibs/android-support-v4-ab4914064794ecc818b60e5d625ee018.jar" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\dexedLibs\android-support-v7-appcompat-6f6cb92a90a866d29d6f66f564b115e2.jar" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/dexedLibs/android-support-v7-appcompat-6f6cb92a90a866d29d6f66f564b115e2.jar" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\dexedLibs\appcompat_v7-76bcfbbf6206c01e6d4b66f51817f2fb.jar" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/dexedLibs/appcompat_v7-76bcfbbf6206c01e6d4b66f51817f2fb.jar" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\jarlist.cache" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/jarlist.cache" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\res\crunch\drawable-hdpi\ic_launcher.png" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/res/crunch/drawable-hdpi/ic_launcher.png" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\res\crunch\drawable-mdpi\ic_launcher.png" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/res/crunch/drawable-mdpi/ic_launcher.png" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\res\crunch\drawable-xhdpi\ic_launcher.png" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/res/crunch/drawable-xhdpi/ic_launcher.png" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\res\crunch\drawable-xxhdpi\ic_launcher.png" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/res/crunch/drawable-xxhdpi/ic_launcher.png" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\bin\resources.ap_" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/bin/resources.ap_" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\gen\.gitignore" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/gen/.gitignore" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\ic_launcher-web.png" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/ic_launcher-web.png" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\libs\android-support-v4.jar" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/libs/android-support-v4.jar" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\lint.xml" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/lint.xml" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\proguard-project.txt" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/proguard-project.txt" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\project.properties" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/project.properties" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\res\drawable-hdpi\ic_launcher.png" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/res/drawable-hdpi/ic_launcher.png" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\res\drawable-mdpi\ic_launcher.png" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/res/drawable-mdpi/ic_launcher.png" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\res\drawable-xhdpi\ic_launcher.png" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\res\drawable-xxhdpi\ic_launcher.png" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/res/drawable-xxhdpi/ic_launcher.png" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\res\layout\activity_main.xml" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/res/layout/activity_main.xml" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\res\values-v11\styles.xml" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/res/values-v11/styles.xml" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\res\values-v14\styles.xml" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/res/values-v14/styles.xml" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\res\values\strings.xml" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/res/values/strings.xml" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\res\values\styles.xml" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/res/values/styles.xml" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\budimoljudi\BudimoLjudi\src\com\softlab\budimoljudi\MainActivity.java" afterPath="$PROJECT_DIR$/BudimoLjudiAndroidApp/src/com/softlab/budimoljudi/MainActivity.java" />
     </list>
     <ignored path="budimoljudi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,7 +70,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="21" selection-start="1139" selection-end="1139" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="2822">
+            <state line="24" column="21" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="2822">
               <folding />
             </state>
           </provider>
@@ -52,7 +79,7 @@
       <file leaf-file-name="ponudi-pomoc.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ponudi-pomoc.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="20" selection-start="2787" selection-end="2787" vertical-scroll-proportion="0.53424656" vertical-offset="720" max-vertical-offset="2499">
+            <state line="54" column="0" selection-start="2421" selection-end="2421" vertical-scroll-proportion="0.38812786" vertical-offset="663" max-vertical-offset="2499">
               <folding />
             </state>
           </provider>
@@ -205,7 +232,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25609756" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25930682" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -237,6 +264,27 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="21" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2822">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ponudi-pomoc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="20" selection-start="2787" selection-end="2787" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="2499">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="0" selection-start="2002" selection-end="2032" vertical-scroll-proportion="0.0" vertical-offset="1343" max-vertical-offset="5525">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="51" selection-start="1887" selection-end="1887" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2941">
@@ -274,14 +322,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="21" selection-start="1139" selection-end="1139" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="2822">
+        <state line="24" column="21" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="2822">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ponudi-pomoc.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="20" selection-start="2787" selection-end="2787" vertical-scroll-proportion="0.53424656" vertical-offset="720" max-vertical-offset="2499">
+        <state line="54" column="0" selection-start="2421" selection-end="2421" vertical-scroll-proportion="0.38812786" vertical-offset="663" max-vertical-offset="2499">
           <folding />
         </state>
       </provider>

@@ -1,1 +1,6 @@
-.idea
+
+/assets
+/index.php
+/.idea
+/protected/runtime
+/protected/config/console.php
