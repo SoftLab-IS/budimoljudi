@@ -71,10 +71,18 @@ class HelpController extends Controller
 
 		if(isset($_POST['Help']))
 		{
-            foreach($_POST['type'] as $oneType)
+            if(isset($_POST['type']))
             {
-                $model->types .= $oneType;
+                foreach($_POST['type'] as $oneType)
+                {
+                    $model->types .= $oneType;
+                }
             }
+            else
+            {
+                $model->addError('type', "Trebate izabrati barem jedan tip pomoci");
+            }
+
 			$model->attributes=$_POST['Help'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));

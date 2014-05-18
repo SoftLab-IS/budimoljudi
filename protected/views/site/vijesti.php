@@ -1,8 +1,15 @@
+<h2>Najnovije vijesti</h2>
+
 <?php foreach($model as $vijest): ?>
-	<?php echo $vijest->title; ?><br />
-	<?php echo $vijest->content; ?><br />
-	<?php echo $vijest->image; ?><br />
-	<?php echo $vijest->user_id; ?><br />
-	<?php echo $vijest->date; ?><br />
-	<hr />
+    <article>
+
+        <h3><?php echo $vijest->title; ?>
+            <em><?php echo date('d.m.Y. \u h:m', strtotime($vijest->date)); ?></em>
+        </h3>
+
+        <?php echo $vijest->content; ?><br />
+        <?php echo $vijest->image; ?><br />
+
+    </article>
+    <hr />
 <?php endforeach; ?>
