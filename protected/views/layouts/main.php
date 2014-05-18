@@ -33,7 +33,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#">Budimo Ljudi</a>
+				<a class="navbar-brand logo" href="<?php echo Yii::app()->baseUrl; ?>">Budimo Ljudi</a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<?php $this->widget('zii.widgets.CMenu',array(
@@ -57,9 +57,9 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-12">
+		<footer class="col-md-12">
 			<p class="copyright text-center">Copyright SoftLab &copy; 2014</p>
-		</div>
+		</footer>
 	</div>
 </div>
 

@@ -5,22 +5,15 @@ $this->pageTitle=Yii::app()->name;
 ?>
 <div class="col-md-6 col-md-push-3 cta-holder">
 	<div class="col-md-4 col-md-push-4 text-center">
-		<a class="btn btn-lg btn-primary btn-block" href="#">Ponudi pomoć</a>
-		<a class="btn btn-sm btn-default btn-block" href="#">Pokreni akciju</a>
+        <?php echo CHtml::link("Ponudi pomoć",array("help/create"), array('class'=>"btn btn-lg btn-primary btn-block")); ?>
+        <?php echo CHtml::link("Pokreni akciju",array("action/create"), array('class'=>"btn btn-md btn-default btn-block")); ?>
 	</div>
 </div>
-
-</div>
-
 
 <div class="col-md-7">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<div class="">
-				Akcije
-			</div>
-
-
+			Akcije
 		</div>
 
 		<table class="table">
@@ -77,8 +70,6 @@ $this->pageTitle=Yii::app()->name;
 		</div>
 	</div>
 </div>
-
-
 
 <div class="col-md-12">
 	<div class="panel panel-default">
