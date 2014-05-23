@@ -181,7 +181,7 @@ class CityController extends Controller
         $data=City::model()->findAll('region_id=:region_id',
             array(':region_id'=>(int)$_POST['region']));
 
-        $data=CHtml::listData($data,'id','name');
+        $data=CHtml::listData($data,'ptt','name');
 
         echo "<option value='-1'>Svi gradovi</option>";
         foreach($data as $value=>$city_name)

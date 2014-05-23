@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Action #<?php echo $model->id; ?></h1>
+<h1>Akcija #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -31,3 +31,14 @@ $this->menu=array(
 		'number_of_participants',
 	),
 )); ?>
+
+<div class="col-sm-6">
+    <h2><?php echo $model->title; ?></h2>
+    <div class="action-content">
+        <?php echo $model->description; ?>
+    </div>
+</div>
+
+<div class="col-sm-6">
+    <?php $this->renderPartial('//_shared/_akcije', array('model'=>$actions)); ?>
+</div>

@@ -86,7 +86,6 @@
             </div>
             <div class="col-md-9">
                 <?php
-
                 echo CHtml::dropDownList('Help[city_ptt]', $model, array(),
                     array(
                         'class'=>'form-control',

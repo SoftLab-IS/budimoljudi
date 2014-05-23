@@ -51,9 +51,11 @@ class ActionController extends Controller
 	 */
 	public function actionView($id)
 	{
+        $dataProvider=Action::model()->findAll(array('order'=>'id DESC'));
 		$this->layout = 'main';
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+            'actions'=>$dataProvider
 		));
 	}
 
@@ -83,7 +85,7 @@ class ActionController extends Controller
 				$model->user_id = $userModel->id;
 				if($model->validate()){
 					$model->save(false);
-					$this->redirect('action',array('id'=>$model->id));
+					$this->redirect('view',array('id'=>$model->id));
 				}
 			}
 		}
