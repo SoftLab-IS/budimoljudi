@@ -7,6 +7,7 @@
  */
 class UserIdentity extends CUserIdentity
 {
+	private $id;
 	/**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
@@ -26,12 +27,17 @@ class UserIdentity extends CUserIdentity
 		}
 		else
 		{
+			$this->id = $user->id;
 			Yii::app()->session['id'] = $user->id;
 			Yii::app()->session['level'] = $user->type;
 			Yii::app()->session['fullname'] = $user->name;
+			$this->setState('roles', $user->type);
 
 			$this->errorCode = self::ERROR_NONE;
 			return true;
 		}
+	}
+	public function getId(){
+		return $this->id;
 	}
 }
