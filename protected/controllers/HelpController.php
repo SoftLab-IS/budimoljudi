@@ -113,6 +113,7 @@ class HelpController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$userModel = User::model()->findByPk($model->user_id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -126,6 +127,7 @@ class HelpController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+			'userModel'=>$userModel,
 		));
 	}
 

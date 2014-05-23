@@ -22,7 +22,12 @@ return array(
 	
 	'components'=>array(
 
-		// uncomment the following to use a MySQL database
+		'user'=>array(
+			// enable cookie-based authentication
+			'class'=>'WebUser',
+			'allowAutoLogin'=>true,
+
+		),
 		
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=ljudi',

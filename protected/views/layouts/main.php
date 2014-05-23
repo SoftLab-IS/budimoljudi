@@ -39,7 +39,8 @@
 				<?php $this->widget('zii.widgets.CMenu',array(
 					'htmlOptions'=>array('class' => "nav navbar-nav navbar-right",),
 					'items'=>array(
-						array('label'=>'Ponudi pomoć', 'url'=>array('/help/create')),
+						array('label'=>'Ponudi pomoć', 'url'=>array('/help/create'), 'visible'=>!Yii::app()->user->checkAccess("ponudi_pomoc")),
+						array('label'=>Yii::app()->session['fullname'], 'url'=>array('/help/update/','id'=>Yii::app()->session['id']), 'visible'=>Yii::app()->user->checkAccess("ponudi_pomoc")),
 						array('label'=>'Akcije', 'url'=>array('/action/index')),
 						array('label'=>'Aktuelne vijesti', 'url'=>array('/site/vijesti')),
 						array('label'=>'Važne informacije', 'url'=>array('/site/vazne_informacije')),
