@@ -54,10 +54,7 @@
 
 		<div class="col-md-12">
 			<?php echo $form->labelEx($model,'description'); ?>
-			<?php $this->widget('ext.redactor.ImperaviRedactorWidget',array(
-				"model"=>$model,
-				"attribute"=>'description',
-			)); ?>
+			<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>255)); ?>
 			<?php echo $form->error($model,'description'); ?>
 		</div>
 
