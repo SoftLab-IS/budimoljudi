@@ -59,8 +59,8 @@ class Region extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'state_id' => 'State',
+			'name' => 'Ime',
+			'state_id' => 'Drzava',
 		);
 	}
 
