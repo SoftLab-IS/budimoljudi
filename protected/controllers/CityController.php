@@ -28,7 +28,7 @@ class CityController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'loadcities'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -170,4 +170,21 @@ class CityController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+    /**
+     * Salje ajaxom gradove za izabrani region
+     */
+    public function actionLoadcities() {
+        if((int)$_POST['region'] == -1)
+            return false;
+
+        $data=City::model()->findAll('region_id=:region_id',
+            array(':region_id'=>(int)$_POST['region']));
+
+        $data=CHtml::listData($data,'id','name');
+
+        echo "<option value='-1'>Svi gradovi</option>";
+        foreach($data as $value=>$city_name)
+            echo CHtml::tag('option', array('value'=>$value),CHtml::encode($city_name),true);
+    }
 }

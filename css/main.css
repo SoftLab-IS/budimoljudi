@@ -124,7 +124,18 @@ body {
 .form-control {
     margin-bottom: .5rem;
 }
+.form-section-heading {
+    margin-bottom: 1em;
+}
+    .form-section-heading h3 {
+         margin-bottom: .2em;
+     }
+    .form-section-heading p {
+        font-size: .85em;
+        margin: .2em 0;
 
+        color: #999;
+    }
 article h3 em {
     display: block;
     color: #666;

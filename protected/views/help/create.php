@@ -5,10 +5,8 @@
 
 <div class="col-md-12">
 
-    <hgroup>
-        <h2>Ponudi pomoć</h2>
-        <h3>Opis nudjenja pomoci</h3>
-    </hgroup>
+        <h1>Ponudi pomoć</h1>
+        <p>Opis nudjenja pomoci</p>
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'userModel'=>$userModel)); ?>
 

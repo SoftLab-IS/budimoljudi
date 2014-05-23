@@ -28,7 +28,7 @@ class RegionController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'loadregions'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -170,4 +170,22 @@ class RegionController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+
+    /**
+     * Salje ajaxom regione za izabranu zemlju
+     */
+    public function actionLoadregions() {
+        if((int)$_POST['country'] == -1)
+            return false;
+
+        $data=Region::model()->findAll('id=:state_id',
+            array(':state_id'=>(int)$_POST['country']));
+
+        $data=CHtml::listData($data,'id','name');
+
+        echo "<option value='-1'>Sve regije</option>";
+        foreach($data as $value=>$region_name)
+            echo CHtml::tag('option', array('value'=>$value),CHtml::encode($region_name),true);
+    }
 }
