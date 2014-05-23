@@ -3,7 +3,7 @@
 /* @var $model Help */
 ?>
 
-<div class="col-md-12">
+<div class="col-sm-12">
 
         <h1>Ponudi pomoć</h1>
         <p>Opis nudjenja pomoci</p>

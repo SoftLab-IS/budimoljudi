@@ -6,60 +6,42 @@
 
 <div class="form-wrapper">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'action-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
+    <?php $form=$this->beginWidget('CActiveForm', array(
+        'id'=>'action-form',
+        // Please note: When you enable ajax validation, make sure the corresponding
+        // controller action is handling ajax validation correctly.
+        // There is a call to performAjaxValidation() commented in generated controller code.
+        // See class documentation of CActiveForm for details on this.
+        'enableAjaxValidation'=>false,
+    )); ?>
 
-	<p class="note">Polja sa <span class="required">*</span> su obavezna.</p>
+    <div class="col-sm-12">
+        <small class="note">Polja sa <span class="required">*</span> su obavezna.</small>
+    </div>
+
 
 	<?php echo $form->errorSummary($model); ?>
-	<div class="col-md-6">
-		<h3>Lične informacije</h3>
-		<div class="form-group">
-			<div class="col-md-2">
-				<?php echo $form->labelEx($userModel,'name'); ?>
-			</div>
-			<div class="col-md-10">
-				<?php echo $form->textField($userModel,'name',array('maxlength'=>255, 'class'=>'form-control')); ?>
-				<?php echo $form->error($userModel,'name', array('class'=>'alert alert-danger')); ?>
-			</div>
-			<div class="col-md-2">
-				<?php echo $form->labelEx($userModel,'email'); ?>
-			</div>
-			<div class="col-md-10">
-				<?php echo $form->emailField($userModel,'email',array('maxlength'=>255, 'class'=>'form-control')); ?>
-				<?php echo $form->error($userModel,'email', array('class'=>'alert alert-danger')); ?>
-			</div>
-			<div class="col-md-2">
-				<?php echo $form->labelEx($userModel,'password'); ?>
-			</div>
-			<div class="col-md-10">
-				<?php echo $form->passwordField($userModel,'password',array('maxlength'=>255, 'class'=>'form-control')); ?>
-				<?php echo $form->error($userModel,'password', array('class'=>'alert alert-danger')); ?>
-			</div>
-		</div>
-	</div>
+
+    <div class="col-sm-8">
+        <div class="col-sm-12">
+            <?php echo $form->labelEx($model,'title'); ?>
+            <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255, 'class' => 'form-control')); ?>
+            <?php echo $form->error($model,'title'); ?>
+        </div>
+
+        <div class="col-sm-12">
+            <?php echo $form->labelEx($model,'description'); ?>
+            <?php $this->widget('ext.redactor.ImperaviRedactorWidget',array(
+                "model"=>$model,
+                "attribute"=>'description',
+            )); ?>
+            <?php echo $form->error($model,'description'); ?>
+        </div>
+    </div>
+
 
 	<div class="col-md-6">
-		<div class="col-md-12">
-			<?php echo $form->labelEx($model,'title'); ?>
-			<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?>
-			<?php echo $form->error($model,'title'); ?>
-		</div>
 
-		<div class="col-md-12">
-			<?php echo $form->labelEx($model,'description'); ?>
-			<?php $this->widget('ext.redactor.ImperaviRedactorWidget',array(
-				"model"=>$model,
-				"attribute"=>'description',
-			)); ?>
-			<?php echo $form->error($model,'description'); ?>
-		</div>
 
 		<div class="col-md-12">
 			<?php echo $form->labelEx($model,'time_start');
@@ -139,10 +121,37 @@
 		</div>
 	</div>
 
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-section-heading">
+                <h3>Lične informacije</h3>
+                <p>Vaši lični podaci pomoću kojih ćemo Vas kontaktirati kada nekome zatreba pomoć. Nakon snimanja ponude pomoći
+                    moći ćete ponovo pristupiti svom volonterskom profilu na našem sajtu, pomoću email adrese i lozinke koju ste unijeli.</p>
+            </div>
+        </div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Kreiraj' : 'Save'); ?>
-	</div>
+        <div class="form-group">
+            <div class="col-md-3">
+                <?php echo $form->labelEx($userModel,'name'); ?>
+                <?php echo $form->textField($userModel,'name',array('maxlength'=>255, 'class'=>'form-control')); ?>
+                <?php echo $form->error($userModel,'name', array('class'=>'alert alert-danger')); ?>
+            </div>
+            <div class="col-md-3">
+                <?php echo $form->labelEx($userModel,'email'); ?>
+                <?php echo $form->emailField($userModel,'email',array('maxlength'=>255, 'class'=>'form-control')); ?>
+                <?php echo $form->error($userModel,'email', array('class'=>'alert alert-danger')); ?>
+            </div>
+            <div class="col-md-3">
+                <?php echo $form->labelEx($userModel,'password'); ?>
+                <?php echo $form->passwordField($userModel,'password',array('maxlength'=>255, 'class'=>'form-control')); ?>
+                <?php echo $form->error($userModel,'password', array('class'=>'alert alert-danger')); ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 text-center buttons">
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Snimi akciju' : 'Sačuvaj', array('class'=>'btn btn-primary btn-md')); ?>
+    </div>
 
 <?php $this->endWidget(); ?>
 

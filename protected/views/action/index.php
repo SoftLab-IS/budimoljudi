@@ -3,8 +3,13 @@
 /* @var $model Action */
 ?>
 
-<div class="col-md-12">
-    <h2>Akcije</h2>
+
+<div class="col-sm-10">
+    <h1>Akcije</h1>
+    <p>Opis akcija</p>
+</div>
+<div class="col-sm-2 text-right">
+    <?php echo CHtml::link('Pokreni akciju', array('action/create'), array('class' => 'btn btn-primary')); ?>
 </div>
 
 <div class="col-md-8">
