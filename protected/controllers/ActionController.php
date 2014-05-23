@@ -78,10 +78,13 @@ class ActionController extends Controller
 			if($valid){
 				$userModel->save(false);
 				$model->attributes=$_POST['Action'];
+				$model->time_start = date('Y-m-d h:m:s', strtotime($model->time_start));
+				$model->time_end = date('Y-m-d h:m:s', strtotime($model->time_end));
+				$model->user_id = $userModel->id;
 				if($model->validate()){
 					$model->save(false);
+					$this->redirect('action',array('id'=>$model->id));
 				}
-
 			}
 		}
 		$this->render('create',array(

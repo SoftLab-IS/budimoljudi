@@ -42,6 +42,11 @@
 
 	<div class="col-md-6">
 
+		<div class="col-md-12">
+			<?php echo $form->labelEx($model,'description'); ?>
+			<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>255)); ?>
+			<?php echo $form->error($model,'description'); ?>
+		</div>
 
 		<div class="col-md-12">
 			<?php echo $form->labelEx($model,'time_start');
