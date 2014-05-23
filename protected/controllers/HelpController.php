@@ -68,35 +68,36 @@ class HelpController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		if(isset($_POST['User']))
+		if(isset($_POST['User'],$_POST['Help']))
 		{
 			$userModel->attributes = $_POST['User'];
-			$userModel->password = md5($_POST['User']['password']);
-		}
-		if($userModel->save())
-			$korisnik = $userModel->id;
-		else
-			$korisnik = Yii::app()->session['id'];
-		if(isset($_POST['Help']))
-		{
-            if(isset($_POST['type']))
-            {
-                foreach($_POST['type'] as $oneType)
-                {
-                    $model->types .= $oneType;
-                }
-            }
-            else
-            {
-                $model->addError('type', "Trebate izabrati barem jedan tip pomoci");
-            }
+			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
+			$valid =$userModel->validate();
+			if($valid){
+				$userModel->save(false);
+				if(isset($_POST['type']))
+				{
+					foreach($_POST['type'] as $oneType)
+					{
+						$model->types .= $oneType;
+					}
+				}
+				else
+				{
+					$model->addError('type', "Trebate izabrati barem jedan tip pomoci");
+				}
 
-			$model->attributes=$_POST['Help'];
-			$model->user_id = $korisnik;
+				$model->attributes=$_POST['Help'];
+				$model->user_id = $userModel->id;
 
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				if($model->validate()){
+					$model->save(false);
+					$this->redirect(array('view','id'=>$model->id));
+				}
+			}
+
 		}
+
 
 		$this->render('create',array(
 			'model'=>$model,

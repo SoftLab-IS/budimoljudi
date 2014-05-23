@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Nova Akcija</h1>
+<h1>Pokreni novu Akciju</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'userModel'=>$userModel)); ?>
