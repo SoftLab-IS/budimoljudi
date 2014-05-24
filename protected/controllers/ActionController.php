@@ -67,7 +67,7 @@ class ActionController extends Controller
 	{
 		$this->layout = 'main';
 		$model=new Action;
-		$userModel=new User;
+		$userModel=new User('create');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -76,6 +76,7 @@ class ActionController extends Controller
 		{
 			$userModel->attributes = $_POST['User'];
 			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
+			$userModel->passwordRepeat = ($userModel->passwordRepeat)? md5($userModel->passwordRepeat) : null;
 			$valid =$userModel->validate();
 			if($valid){
 				$userModel->save(false);
@@ -85,7 +86,7 @@ class ActionController extends Controller
 				$model->user_id = $userModel->id;
 				if($model->validate()){
 					$model->save(false);
-					$this->redirect('view',array('id'=>$model->id));
+					$this->redirect(array('view', 'id'=>$model->id));
 				}
 			}
 		}
