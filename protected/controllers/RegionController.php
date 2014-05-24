@@ -176,11 +176,12 @@ class RegionController extends Controller
      * Salje ajaxom regione za izabranu zemlju
      */
     public function actionLoadregions() {
-        if((int)$_POST['country'] == -1)
+        if((int)$_POST['state_id'] == -1)
             return false;
 
-        $data=Region::model()->findAll('id=:state_id',
-            array(':state_id'=>(int)$_POST['country']));
+        $data=Region::model()->findAll('state_id=:state_id',
+            array(':state_id'=>(int)$_POST['state_id']));
+//	    $data = Region::model()->findAllByAttributes(array('state_id'=>(int)$_POST['state_id']));
 
         $data=CHtml::listData($data,'id','name');
 

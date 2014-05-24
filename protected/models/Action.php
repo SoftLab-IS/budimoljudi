@@ -10,12 +10,12 @@
  * @property string $description
  * @property integer $user_id
  * @property string $time_end
- * @property integer $city_ptt
+ * @property integer $Location_id
  * @property integer $number_of_participants
  *
  * The followings are the available model relations:
  * @property User $user
- * @property City $cityPtt
+ * @property Location $location
  */
 class Action extends CActiveRecord
 {
@@ -35,13 +35,13 @@ class Action extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, city_ptt, time_start, time_end', 'required'),
-			array('user_id, city_ptt, number_of_participants', 'numerical', 'integerOnly'=>true),
+			array('user_id, Location_id, time_start, time_end', 'required'),
+			array('user_id, Location_id, number_of_participants', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('time_start, description, time_end', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, time_start, description, user_id, time_end, city_ptt, number_of_participants', 'safe', 'on'=>'search'),
+			array('id, title, time_start, description, user_id, time_end, Location_id, number_of_participants', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,7 +54,7 @@ class Action extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'cityPtt' => array(self::BELONGS_TO, 'City', 'city_ptt'),
+			'cityPtt' => array(self::BELONGS_TO, 'Location', 'Location_id'),
 		);
 	}
 
@@ -70,7 +70,7 @@ class Action extends CActiveRecord
 			'description' => 'Opis Akcije',
 			'user_id' => 'User',
 			'time_end' => 'Kraj akcije',
-			'city_ptt' => 'Grad',
+			'Location_id' => 'Grad',
 			'number_of_participants' => 'Number Of Participants',
 		);
 	}
@@ -99,7 +99,7 @@ class Action extends CActiveRecord
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('time_end',$this->time_end,true);
-		$criteria->compare('city_ptt',$this->city_ptt);
+		$criteria->compare('Location_id',$this->Location_id);
 		$criteria->compare('number_of_participants',$this->number_of_participants);
 
 		return new CActiveDataProvider($this, array(

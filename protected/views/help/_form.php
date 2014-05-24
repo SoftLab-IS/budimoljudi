@@ -44,56 +44,7 @@
                 <h3>Oblast</h3>
                 <p>Izeberite oblast u kojoj bi ste mogli djelovati</p>
             </div>
-            <div class="col-md-3">
-                <?php echo CHtml::label("Država",'country'); ?>
-            </div>
-            <div class="col-md-9">
-                <?php
-                $list = CHtml::listData(State::model()->findAll(), 'id', 'name');
-                echo CHtml::dropDownList('country', '', $list,
-                    array(
-                        'class'=>'form-control',
-                        'prompt'=>'Izaberite državu',
-                        'ajax' => array(
-                            'type'=>'POST',
-                            'url'=>Yii::app()->createUrl('region/loadregions'), //or $this->createUrl('loadcities') if '$this' extends CController
-                            'update'=>'#region', //or 'success' => 'function(data){...handle the data in the way you want...}',
-                            'data'=>array('country'=>'js:this.value'),
-                        )));
-                ?>
-            </div>
-            <div class="col-md-3">
-                <?php echo CHtml::label("Regija",'region'); ?>
-            </div>
-            <div class="col-md-9">
-                <?php
-                $country = 1;
-                $list = CHtml::listData(Region::model()->findAllByAttributes(array("state_id"=>$country)), 'id', 'name');
-                echo CHtml::dropDownList('region', '', $list,
-                    array(
-                        'class'=>'form-control',
-                        'prompt'=>'Sve regije',
-                        'ajax' => array(
-                            'type'=>'POST',
-                            'url'=>Yii::app()->createUrl('city/loadcities'), //or $this->createUrl('loadcities') if '$this' extends CController
-                            'update'=>'#Help_city_ptt', //or 'success' => 'function(data){...handle the data in the way you want...}',
-                            'data'=>array('region'=>'js:this.value'),
-                        )));
-                ?>
-            </div>
-            <div class="col-md-3">
-                <?php echo $form->labelEx($model,'city_ptt'); ?>
-            </div>
-            <div class="col-md-9">
-                <?php
-                echo CHtml::dropDownList('Help[city_ptt]', $model, array(),
-                    array(
-                        'class'=>'form-control',
-                        'empty' => 'Svi gradovi'
-                    ));
-                ?>
-                <?php echo $form->error($model,'city_ptt', array('class'=>'alert alert-danger')); ?>
-            </div>
+	        <?php $this->renderPartial('//_shared/_location_form', array('form'=>$form, 'locationModel'=>$locationModel)); ?>
         </div>
 
         <div class="col-sm-5">
@@ -108,37 +59,7 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="form-section-heading">
-                <h3>Lične informacije</h3>
-                <p>Vaši lični podaci pomoću kojih ćemo Vas kontaktirati kada nekome zatreba pomoć. Nakon snimanja ponude pomoći
-                    moći ćete ponovo pristupiti svom volonterskom profilu na našem sajtu, pomoću email adrese i lozinke koju ste unijeli.</p>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-3">
-                <?php echo $form->labelEx($userModel,'name'); ?>
-                <?php echo $form->textField($userModel,'name',array('maxlength'=>255, 'class'=>'form-control')); ?>
-                <?php echo $form->error($userModel,'name', array('class'=>'alert alert-danger')); ?>
-            </div>
-            <div class="col-md-3">
-                <?php echo $form->labelEx($userModel,'email'); ?>
-                <?php echo $form->emailField($userModel,'email',array('maxlength'=>255, 'class'=>'form-control')); ?>
-                <?php echo $form->error($userModel,'email', array('class'=>'alert alert-danger')); ?>
-            </div>
-            <div class="col-md-3">
-                <?php echo $form->labelEx($userModel,'password'); ?>
-                <?php echo $form->passwordField($userModel,'password',array('maxlength'=>255, 'class'=>'form-control')); ?>
-                <?php echo $form->error($userModel,'password', array('class'=>'alert alert-danger')); ?>
-            </div>
-            <!--            <div class="col-md-3">-->
-            <!--                --><?php //echo $form->labelEx($userModel,'repeat_password'); ?>
-            <!--                --><?php //echo $form->passwordField($userModel,'repeat_password',array('maxlength'=>255, 'class'=>'form-control')); ?>
-            <!--                --><?php //echo $form->error($userModel,'repeat_password', array('class'=>'alert alert-danger')); ?>
-            <!--            </div>-->
-        </div>
-    </div>
+	<?php if(Yii::app()->controller->action->id != 'update') $this->renderPartial('//_shared/_licne_informacije', array('form'=>$form, 'userModel'=>$userModel)); ?>
 
     <div class="col-sm-12 text-center buttons">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Sačuvaj svoj profil' : 'Sačuvaj', array('class'=>'btn btn-primary btn-md')); ?>

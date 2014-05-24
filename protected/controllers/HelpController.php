@@ -65,10 +65,11 @@ class HelpController extends Controller
 		$this->layout = 'main';
 		$model=new Help;
         $userModel = new User;
+		$locationModel = new Location('help');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		if(isset($_POST['User'],$_POST['Help']))
+		if(isset($_POST['User'], $_POST['Help'], $_POST['Location']))
 		{
 			$userModel->attributes = $_POST['User'];
 			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
@@ -76,6 +77,9 @@ class HelpController extends Controller
 			$valid =$userModel->validate();
 			if($valid){
 				$userModel->save(false);
+				$locationModel->attributes = $_POST['Location'];
+				if($locationModel->validate())
+					$locationModel->save(false);
 				if(isset($_POST['type']))
 				{
 					foreach($_POST['type'] as $oneType)
@@ -90,6 +94,7 @@ class HelpController extends Controller
 
 				$model->attributes=$_POST['Help'];
 				$model->user_id = $userModel->id;
+				$model->Location_id = $locationModel->id;
 
 				if($model->validate()){
 					$model->save(false);
@@ -103,6 +108,7 @@ class HelpController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
             'userModel'=>$userModel,
+			'locationModel'=>$locationModel,
 		));
 	}
 
@@ -113,8 +119,10 @@ class HelpController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		$this->layout = 'main';
 		$model=$this->loadModel($id);
 		$userModel = User::model()->findByPk($model->user_id);
+		$locationModel = Location::model()->findByPk($model->Location_id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -129,6 +137,7 @@ class HelpController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 			'userModel'=>$userModel,
+			'locationModel'=>$locationModel
 		));
 	}
 

@@ -175,11 +175,11 @@ class CityController extends Controller
      * Salje ajaxom gradove za izabrani region
      */
     public function actionLoadcities() {
-        if((int)$_POST['region'] == -1)
+        if((int)$_POST['region_id'] == -1)
             return false;
 
         $data=City::model()->findAll('region_id=:region_id',
-            array(':region_id'=>(int)$_POST['region']));
+            array(':region_id'=>(int)$_POST['region_id']));
 
         $data=CHtml::listData($data,'ptt','name');
 

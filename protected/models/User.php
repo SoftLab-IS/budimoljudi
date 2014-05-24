@@ -6,7 +6,6 @@
  * The followings are the available columns in table 'user':
  * @property integer $id
  * @property string $name
- * @property string $last_name
  * @property string $type
  * @property string $email
  * @property string $phone
@@ -20,7 +19,11 @@
 class User extends CActiveRecord
 {
 	const USER_ROLE_VOLONTER = 'volonter';
-	const USER_ROLE_ = 'volonter';
+	const USER_ROLE_POKRETAC = 'pokretac';
+	const USER_ROLE_KOMPLETAN = 'kompletan';
+	const USER_ROLE_ADMIN = 'admin';
+
+	public $passwordRepeat;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -37,9 +40,10 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, email, password', 'required'),
-			array('name, last_name, type, phone, password', 'length', 'max'=>45),
+			array('name, email, password, passwordRepeat', 'required', 'on'=>'create'),
+			array('name, type, phone, password', 'length', 'max'=>45),
 			array('email', 'length', 'max'=>120),
+			array('passwordRepeat', 'compare', 'compareAttribute'=>'password' ,'on'=>'create'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, last_name, type, email, phone, password', 'safe', 'on'=>'search'),
@@ -68,11 +72,11 @@ class User extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Ime i prezime',
-			'last_name' => 'Last Name',
 			'type' => 'Tip',
 			'email' => 'Email adresa',
 			'phone' => 'Broj telefona',
 			'password' => 'Lozinka',
+			'passwordRepeat' => 'Ponovite lozinku',
 		);
 	}
 
@@ -96,7 +100,6 @@ class User extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('last_name',$this->last_name,true);
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('phone',$this->phone,true);
