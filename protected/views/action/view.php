@@ -28,19 +28,19 @@
             <div class="action-cta-wrapper">
                 <div class="action-participants">
                     <?php if ($model->number_of_participants): ?>
-                        <span>Broj prijavljenih volontera</span>
-                        <span class="lable label-default"><?php echo $model->number_of_participants; ?></span>
+                        <p>Broj prijavljenih volontera</p>
+                        <span class="label label-default participants-count"><?php echo $model->number_of_participants; ?></span>
                     <?php else: ?>
-                    Budite prvi volonter koji će podržati ovu akciju
+                    <p>Budite prvi volonter koji će podržati ovu akciju</p>
                     <?php endif; ?>
                 </div>
 
                 <?php echo CHtml::link('Podrži akciju', array('action/ucesce', 'id'=>$model->id), array('class'=>'btn btn-success')) ?>
-
-                <p class="action-meta">Akciju je pokrenuo <?php echo User::model()->findByPk($model->user_id)->name; ?></p>
             </div>
-
         </div>
+    </div>
+    <div class="col-sm-12">
+        <small class="action-meta">Akciju je pokrenuo <?php echo User::model()->findByPk($model->user_id)->name; ?></small>
     </div>
 </div>
 

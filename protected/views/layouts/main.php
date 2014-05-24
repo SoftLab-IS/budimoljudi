@@ -40,15 +40,30 @@
 					'htmlOptions'=>array('class' => "nav navbar-nav navbar-right",),
 					'items'=>array(
 						array('label'=>'Ponudi pomoć', 'url'=>array('/help/create'), 'visible'=>!Yii::app()->user->checkAccess("ponudi_pomoc")),
-						array('label'=>Yii::app()->session['fullname'], 'url'=>array('/help/update/','id'=>Yii::app()->session['id']), 'visible'=>Yii::app()->user->checkAccess("ponudi_pomoc")),
 						array('label'=>'Akcije', 'url'=>array('/action/index')),
-						array('label'=>'Aktuelne vijesti', 'url'=>array('/site/vijesti')),
-						array('label'=>'Važne informacije', 'url'=>array('/site/vazne_informacije')),
-						array('label'=>'Kontakt', 'url'=>array('/site/contact')),
+                        array('label'=>'Poplave <i class="glyphicon glyphicon-bullhorn"></i>', 'url'=>array('/site/vazne_informacije'), 'linkOptions' => array('class' => 'menu-highlight')),
+                        array('label'=>'Blog', 'url'=>array('/site/vijesti')),
+						//array('label'=>'Kontakt', 'url'=>array('/site/contact')),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-						array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest, 'htmlOptions'=>array('class'=>'btn'))
-					),
-				)); ?>
+                        array('label'=> '<i class="glyphicon glyphicon-user"></i> ' . Yii::app()->session['fullname'] . ' <i class="caret"></i>', 'url'=>'#', 'visible'=>Yii::app()->user->checkAccess("ponudi_pomoc"),
+                            'items' => array(
+                                array('label'=>'Moje akcije', 'url'=>'#'),
+                                array('label'=>'Uredi profil', 'url'=>array('/help/update/','id'=>Yii::app()->session['id'])),
+                                array('label'=>'', 'url'=>'', 'itemOptions' => array('class' => 'divider')),
+                                array('label'=>'Odjavi me', 'url'=>array('/site/logout')),
+                            ),
+                            'itemOptions' => array('class' => 'dropdown'),
+                            'linkOptions'=> array(
+                                'class' => 'dropdown-toggle',
+                                'data-toggle' => 'dropdown',
+                                )
+                        )
+				    ),
+                    'encodeLabel' => false,
+                    'submenuHtmlOptions' => array(
+                        'class' => 'dropdown-menu',
+                    )
+                )); ?>
 			</div>
 		</div>
 	</nav>
@@ -59,16 +74,20 @@
 
 	<div class="row">
 		<footer class="col-md-12">
-			<p class="copyright text-center">Copyright SoftLab &copy; 2014</p>
+            <div class="text-center">
+                <p class="copyright">Copyright Budimo Ljudi &copy; 2014</p>
+                <p class="credits">Developed by <?php echo CHtml::link('Evolution Web Studio', 'http://evolution.rs.ba', array('target' => '_blank')); ?> </p>
+            </div>
+
 		</footer>
 	</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="<?php echo Yii::app()->getBaseUrl(true); ?>js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>js/bootstrap.min.js"></script>
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>js/plugins.js"></script>
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>js/main.js"></script>
+<script>window.jQuery || document.write('<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/bootstrap.min.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/plugins.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/main.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>

@@ -122,9 +122,7 @@
         </div>
         <div class="col-sm-8">
             <?php
-            $country = 1;
-            $list = CHtml::listData(Region::model()->findAllByAttributes(array("state_id"=>$country)), 'id', 'name');
-            echo CHtml::dropDownList('region', '', $list,
+            echo CHtml::dropDownList('region', '', array(),
                 array(
                     'class'=>'form-control',
                     'prompt'=>'Sve regije',

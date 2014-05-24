@@ -3,12 +3,24 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
-<div class="col-md-6 col-md-push-3 cta-holder">
-	<div class="col-md-4 col-md-push-4 text-center">
-        <?php echo CHtml::link("Ponudi pomoć",array("help/create"), array('class'=>"btn btn-lg btn-primary btn-block")); ?>
-        <?php echo CHtml::link("Pokreni akciju",array("action/create"), array('class'=>"btn btn-md btn-default btn-block")); ?>
-	</div>
+
+<div class="col-sm-12 slider">
+    <div class="slider-item">
+        <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/img/poplave-u-republici-srpskoj.jpg" alt=""/>
+
+        <div class="cta-holder col-sm-5">
+            <div class="col-sm-6">
+                <p>Mnogi su izgubili sve. Ucinite barem toliko da i oni zive kao normalni ljudi.</p>
+            </div>
+            <div class="col-sm-6 text-center">
+
+                <?php echo CHtml::link("Ponudi pomoć",array("help/create"), array('class'=>"btn btn-lg btn-primary btn-block")); ?>
+                <?php echo CHtml::link("Pokreni akciju",array("action/create"), array('class'=>"btn btn-md btn-default btn-block")); ?>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <div class="col-md-7">
 	<?php $this->renderPartial('//_shared/_akcije', array('model'=>$akcije)); ?>

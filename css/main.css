@@ -101,8 +101,10 @@ body {
     padding-top: 70px;
     background: url('../img/square_bg.png');
 }
+
+/* MAIN MENU */
+
 .navbar-brand {
-    text-transform: uppercase;
     color: #428BCA!important;
     font-size: 1.5rem;
 }
@@ -110,6 +112,14 @@ body {
     display: inline;
     padding: 0 10px;
 }
+.menu-highlight {
+
+ }
+    .menu-highlight:hover {
+
+    }
+
+/* FRONTPAGE */
 
 .cta-holder {
     margin-top: 2rem;
@@ -143,6 +153,21 @@ article h3 em {
     padding-top: .2rem;
 }
 
+/* SLIDER */
+
+.slider {
+    margin-bottom: 2em;
+    color: #fff;
+}
+    .slider-item img {
+        width: 100%;
+    }
+        .slider-item .cta-holder {
+            position: absolute;
+            top: 30%;
+            z-index: 9;
+        }
+
 /* Akcija */
 
 .one-action-wrapper {
@@ -160,14 +185,34 @@ article h3 em {
     margin-top: 2em;
 }
     .action-cta-wrapper .btn {
-        margin-top: 1.2em;
+        margin-top: 1em;
         margin-bottom: 2em;
+    }
+.action-participants {
+    padding-bottom: 1em;
+}
+    .action-participants p {
+        margin-top: 0;
+        margin-bottom: .2em
     }
 .action-meta {
     font-size: .9em;
     color: #666;
 }
 
+/* FOOTER */
+
+.copyright {
+    font-size: .9em;
+    margin-top: 2em;
+    margin-bottom: .2em;
+    color: #333;
+}
+.credits {
+    font-size: .8em;
+    margin: .2em 0 1em;
+    color: #333;
+}
 
 /* ==========================================================================
    Helper classes
