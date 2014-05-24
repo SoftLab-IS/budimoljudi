@@ -12,15 +12,22 @@ class WebUser extends CWebUser
 	{
 		if (empty($this->id)) {
 			// Not identified => no rights
-			return false;
+			return true;
 		}
 		$role = $this->getState("roles");
 
 		if($operation==='ponudi_pomoc') {
-			if($role === 'pomoc' AND $role === 'sve'){
+			if($role === User::USER_ROLE_VOLONTER OR $role === User::USER_ROLE_KOMPLETAN){
 				return false;
 			}
 			return true;
+		}
+
+		if($operation==='profile') {
+			if($role === User::USER_ROLE_VOLONTER OR $role === User::USER_ROLE_KOMPLETAN){
+				return true;
+			}
+			return false;
 		}
 
 		if ($role === 'akcija') {

@@ -64,7 +64,7 @@ class HelpController extends Controller
 	{
 		$this->layout = 'main';
 		$model=new Help;
-        $userModel = new User;
+        $userModel = new User('create');
 		$locationModel = new Location('help');
 		$helpTypes = Helptypes::model()->findAll();
 
@@ -73,9 +73,11 @@ class HelpController extends Controller
 		if(isset($_POST['User'], $_POST['Help'], $_POST['Location']))
 		{
 			$userModel->attributes = $_POST['User'];
-			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
 			$userModel->type = User::USER_ROLE_VOLONTER;
+			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
+			$userModel->passwordRepeat = ($userModel->passwordRepeat)? md5($userModel->passwordRepeat) : null;
 			$valid =$userModel->validate();
+
 			if($valid){
 				$userModel->save(false);
 				$locationModel->attributes = $_POST['Location'];
@@ -145,8 +147,8 @@ class HelpController extends Controller
 		if(isset($_POST['Location']))
 		{
 			$locationModel->attributes = $_POST['Location'];
-			if($locationModel->validate())
-				$locationModel->save(false);
+			if($locationModel->validate('help'))
+				$locationModel->update();
 		}
 		if(isset($_POST['Help']))
 		{
@@ -154,6 +156,9 @@ class HelpController extends Controller
 			$model->Location_id = $locationModel->id;
 			if($model->save())
 			{
+				$type = Helphastypes::model()->findAllByAttributes(array('help_id'=>$model->id));
+				foreach($type as $t)
+					$t->delete();
 				if(isset($_POST['type']))
 				{
 					foreach($_POST['type'] as $oneType)

@@ -41,6 +41,7 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name, email, password, passwordRepeat', 'required', 'on'=>'create'),
+			array('email', 'unique','className'=>'User','attributeName'=>'email','message'=>"Već ste registrovani sa ovom adresom"),
 			array('name, type, phone, password', 'length', 'max'=>45),
 			array('email', 'length', 'max'=>120),
 			array('passwordRepeat', 'compare', 'compareAttribute'=>'password' ,'on'=>'create'),
