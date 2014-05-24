@@ -171,7 +171,7 @@ article h3 em {
     }
         .slider-item .cta-holder {
             position: absolute;
-            top: 50%;
+            top: 45%;
             z-index: 9;
         }
         .slider-item .btn {

@@ -9,6 +9,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # otherwise forward it to index.php
-RewriteRule ^(.*)\?*$ index.php/$1 [L,QSA]
+RewriteRule ^(.*)\?*$ budimoljudi/index.php/$1 [L,QSA]
 
 AddDefaultCharset UTF-8

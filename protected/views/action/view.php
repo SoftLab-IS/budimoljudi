@@ -11,9 +11,9 @@
         <div class="col-sm-3">
             <div class="action-info text-center">
                 <ul class="list-group">
-                    <li class="list-group-item"><span>Grad </span><strong><?php echo City::getCityName($model->city_ptt); ?></strong></li>
-                    <li class="list-group-item"><span>Početak akcije </span><strong><?php echo date('d.m.Y \u h:m', strtotime($model->time_start)); ?></strong><sup>h</sup></li>
-                    <li class="list-group-item"><span>Kraj akcije </span><strong><?php echo date('d.m.Y \u h:m', strtotime($model->time_end)); ?></strong><sup>h</sup></li>
+                    <li class="list-group-item"><span>Grad </span><strong><?php echo City::getCityName($model->location->city_ptt); ?></strong></li>
+                    <li class="list-group-item"><span>Početak akcije </span><strong><?php echo date('d.m.Y \u H:m', strtotime($model->time_start)); ?></strong><sup>h</sup></li>
+                    <li class="list-group-item"><span>Kraj akcije </span><strong><?php echo date('d.m.Y \u H:m', strtotime($model->time_end)); ?></strong><sup>h</sup></li>
                 </ul>
             </div>
         </div>
