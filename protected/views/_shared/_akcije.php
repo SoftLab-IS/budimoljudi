@@ -7,8 +7,8 @@
 
 	<table class="table">
 		<tr>
-			<th class="col-sm-7">Naziv akcije</th>
-			<th class="col-sm-2">Lokacija</th>
+			<th class="col-sm-6">Naziv akcije</th>
+			<th class="col-sm-3">Grad</th>
 			<th class="col-sm-3">Početak akcije</th>
 <!--			<th class="col-sm-1">&nbsp;</th>-->
 		</tr>

@@ -32,7 +32,7 @@ class HelpController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view','update'),
+				'actions'=>array('index','view','update', 'kreirana'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -169,7 +169,7 @@ class HelpController extends Controller
 						$helpHasTypes->save();
 					}
 				}
-				$this->redirect(array('/'));
+				$this->redirect(array('kreirana', 'id' => $id));
 			}
 
 		}
@@ -250,4 +250,13 @@ class HelpController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+    public function actionKreirana($id)
+    {
+        $this->layout = 'main';
+        $help = Help::model()->findByPk($id);
+        $this->render('kreirana',array(
+            'model' => $help,
+        ));
+    }
 }
