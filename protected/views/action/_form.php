@@ -51,7 +51,7 @@
             <?php echo $form->error($model,'time_start'); ?>
         </div>
         <div class="col-sm-3">
-            <input type="text" placeholder="<?php echo date('H:m'); ?>" class="form-control" id="start-time" name="t_start"/>
+            <input type="text" placeholder="<?php echo date('H:i'); ?>" class="form-control" id="start-time" name="t_start"/>
         </div>
 
         <div class="col-sm-4">
@@ -62,7 +62,7 @@
             <?php echo $form->error($model,'time_end'); ?>
         </div>
         <div class="col-sm-3">
-            <input type="text" placeholder="<?php echo date('H:m'); ?>" class="form-control" id="end-time" name="t_end"/>
+            <input type="text" placeholder="<?php echo date('H:i'); ?>" class="form-control" id="end-time" name="t_end"/>
         </div>
 
 	    <?php $this->renderPartial('//_shared/_location_form', array('form'=>$form, 'locationModel'=>$locationModel)); ?>

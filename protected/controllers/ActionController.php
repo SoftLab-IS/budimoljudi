@@ -86,13 +86,13 @@ class ActionController extends Controller
 				if($locationModel->validate())
 					$locationModel->save(false);
 				$model->attributes=$_POST['Action'];
-				$model->time_start = date('Y-m-d h:m:s', strtotime($model->time_start));
-				$model->time_end = date('Y-m-d h:m:s', strtotime($model->time_end));
+				$model->time_start = date('Y-m-d H:i:s', strtotime($_POST['d_start'] . ' ' . $_POST['t_start']));
+				$model->time_end = date('Y-m-d H:i:s', strtotime($_POST['d_end'] . ' ' . $_POST['t_end']));
 				$model->user_id = $userModel->id;
 				$model->Location_id = $locationModel->id;
 				if($model->validate()){
 					$model->save(false);
-					$this->redirect(array('success', 'id'=>$model->id));
+					$this->redirect(array('kreirana', 'id'=>$model->id));
 				}
 			}
 		}
@@ -209,7 +209,7 @@ class ActionController extends Controller
 			$actionUsers->save(false);
 			$action->number_of_participants++;
 			$action->update();
-			$this->redirect('/');
+			$this->redirect(array('podrzana', 'id' => $id));
 		}
 		else
 		{
