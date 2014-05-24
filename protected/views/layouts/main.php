@@ -14,8 +14,10 @@
 
 	<link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/bootstrap.min.css"/>
 	<!--<link rel="stylesheet" href="css/bootstrap-theme.min.css"/>-->
+    <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/jquery.datetimepicker.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/normalize.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/main.css">
+
 	<script src="<?php echo Yii::app()->baseUrl; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
@@ -87,6 +89,7 @@
 <script>window.jQuery || document.write('<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/bootstrap.min.js"></script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/plugins.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/vendor/jquery.datetimepicker.js"></script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/main.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

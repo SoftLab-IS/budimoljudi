@@ -9,6 +9,7 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700&subset=latin-ext");
 
 html,
 button,
@@ -100,6 +101,7 @@ textarea {
 body {
     padding-top: 70px;
     background: url('../img/square_bg.png');
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* MAIN MENU */
@@ -157,15 +159,23 @@ article h3 em {
 
 .slider {
     margin-bottom: 2em;
-    color: #fff;
 }
+    .slider p {
+        margin: 0;
+        font-size: 1.5em;
+        color: #fff;
+        text-shadow: 1px 1px 0 #111;
+    }
     .slider-item img {
         width: 100%;
     }
         .slider-item .cta-holder {
             position: absolute;
-            top: 30%;
+            top: 50%;
             z-index: 9;
+        }
+        .slider-item .btn {
+            margin-top: .5em;
         }
 
 /* Akcija */

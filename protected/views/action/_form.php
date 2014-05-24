@@ -47,27 +47,7 @@
             <?php echo $form->labelEx($model,'time_start'); ?>
         </div>
         <div class="col-sm-8">
-            <?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
-                'name'=>'Action[time_start]',
-                'id'=>'Action_time_start',
-                // additional javascript options for the date picker plugin
-                'options'=>array(
-                    'showAnim'=>'fade',
-                    'dayNamesMin'=> array('Ned' ,'Pon', 'Uto', 'Sre', 'Čet', 'Pet', 'Sub'),
-                    'dateFormat'=>"dd.mm.yy",
-                    'firstDay'=>1,
-                    'monthNames'=>array('Januar', 'Februar', 'Mart', 'April', 'Maj', 'Juni', 'Juli', 'August', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'),
-                    'monthNamesShort'=>array('Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'),
-                    'changeMonth'=>true,
-                    'changeYear'=>true
-                ),
-                'htmlOptions'=>array(
-                    'style'=>'height:2.3125rem;',
-                    'required' =>'required',
-                    'class' => 'form-control'
-                ),
-            ));
-            ?>
+            <?php echo $form->textField($model, 'time_start', array('class' => 'form-control datetimepicker', 'id' => 'start-date')); ?>
             <?php echo $form->error($model,'time_start'); ?>
         </div>
 
@@ -75,27 +55,7 @@
             <?php echo $form->labelEx($model,'time_end'); ?>
         </div>
         <div class="col-sm-8">
-            <?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
-                'name'=>'Action[time_end]',
-                'id'=>'Action_time_end',
-                // additional javascript options for the date picker plugin
-                'options'=>array(
-                    'showAnim'=>'fade',
-                    'dayNamesMin'=> array('Ned' ,'Pon', 'Uto', 'Sre', 'Čet', 'Pet', 'Sub'),
-                    'dateFormat'=>"dd.mm.yy",
-                    'firstDay'=>1,
-                    'monthNames'=>array('Januar', 'Februar', 'Mart', 'April', 'Maj', 'Juni', 'Juli', 'August', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'),
-                    'monthNamesShort'=>array('Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'),
-                    'changeMonth'=>true,
-                    'changeYear'=>true
-                ),
-                'htmlOptions'=>array(
-                    'style'=>'height:2.3125rem;',
-                    'required' =>'required',
-                    'class' => 'form-control'
-                ),
-            ));
-            ?>
+            <?php echo $form->textField($model, 'time_end', array('class' => 'form-control datetimepicker', 'id' => 'end-date')); ?>
             <?php echo $form->error($model,'time_end'); ?>
         </div>
 
