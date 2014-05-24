@@ -171,7 +171,7 @@ article h3 em {
     }
         .slider-item .cta-holder {
             position: absolute;
-            top: 50%;
+            top: 45%;
             z-index: 9;
         }
         .slider-item .btn {
@@ -208,6 +208,13 @@ article h3 em {
 .action-meta {
     font-size: .9em;
     color: #666;
+}
+
+/* SOCIAL */
+
+.social-share-buttons {
+    margin-top: 1em;
+    margin-bottom: 2em;
 }
 
 /* FOOTER */

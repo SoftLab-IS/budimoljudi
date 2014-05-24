@@ -46,17 +46,23 @@
         <div class="col-sm-4">
             <?php echo $form->labelEx($model,'time_start'); ?>
         </div>
-        <div class="col-sm-8">
-            <?php echo $form->textField($model, 'time_start', array('class' => 'form-control datetimepicker', 'id' => 'start-date')); ?>
+        <div class="col-sm-5">
+            <input type="text" placeholder="<?php echo date('d.m.Y'); ?>" class="form-control" id="start-date" name="d_start"/>
             <?php echo $form->error($model,'time_start'); ?>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" placeholder="<?php echo date('H:m'); ?>" class="form-control" id="start-time" name="t_start"/>
         </div>
 
         <div class="col-sm-4">
             <?php echo $form->labelEx($model,'time_end'); ?>
         </div>
-        <div class="col-sm-8">
-            <?php echo $form->textField($model, 'time_end', array('class' => 'form-control datetimepicker', 'id' => 'end-date')); ?>
+        <div class="col-sm-5">
+            <input type="text" placeholder="<?php echo date('d.m.Y'); ?>" class="form-control" id="end-date" name="d_end"/>
             <?php echo $form->error($model,'time_end'); ?>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" placeholder="<?php echo date('H:m'); ?>" class="form-control" id="end-time" name="t_end"/>
         </div>
 
 	    <?php $this->renderPartial('//_shared/_location_form', array('form'=>$form, 'locationModel'=>$locationModel)); ?>

@@ -8,19 +8,22 @@ $this->pageTitle=Yii::app()->name;
     <div class="slider-item">
         <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/img/poplave-u-republici-srpskoj.jpg" alt=""/>
 
-        <div class="cta-holder col-sm-6">
-            <div class="col-sm-8">
-                <p>Mnogi su izgubili sve. Pomozimo im da ponovo stanu na noge.</p>
+        <div class="cta-holder col-sm-4 col-sm-push-2">
+            <div class="col-sm-12">
+                <p>Mnogi su izgubili sve. Pomozimo im da ponovo žive.</p>
             </div>
-            <div class="col-sm-4 text-center">
-                <?php
-                    if(Yii::app()->user->checkAccess("ponudi_pomoc"))
-                        echo CHtml::link("Ponudi pomoć",array("help/create"), array('class'=>"btn btn-lg btn-primary btn-block"));
-                    else
-	                    echo CHtml::link("Ponudi pomoć",array("help/update",'id'=>Yii::app()->session['id']), array('class'=>"btn btn-lg btn-primary btn-block"));
-                ?>
-                <?php //echo CHtml::link("Pokreni akciju",array("action/create"), array('class'=>"btn btn-md btn-default btn-block")); ?>
+            <div class="col-sm-12">
+                <div class="col-sm-8 col-sm-push-4">
+                    <?php
+                        if(Yii::app()->user->checkAccess("ponudi_pomoc"))
+                            echo CHtml::link("Ponudite pomoć",array("help/create"), array('class'=>"btn btn-lg btn-primary btn-block"));
+                        else
+                            echo CHtml::link("Ponudite pomoć",array("help/update",'id'=>Yii::app()->session['id']), array('class'=>"btn btn-lg btn-primary btn-block"));
+                    ?>
+                    <?php //echo CHtml::link("Pokreni akciju",array("action/create"), array('class'=>"btn btn-md btn-default btn-block")); ?>
+                </div>
             </div>
+
         </div>
     </div>
 </div>

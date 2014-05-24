@@ -32,7 +32,7 @@ class ActionController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update', 'ucesce'),
+				'actions'=>array('update', 'ucesce', 'kreirana', 'podrzana'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -92,7 +92,7 @@ class ActionController extends Controller
 				$model->Location_id = $locationModel->id;
 				if($model->validate()){
 					$model->save(false);
-					$this->redirect(array('view', 'id'=>$model->id));
+					$this->redirect(array('success', 'id'=>$model->id));
 				}
 			}
 		}
@@ -216,4 +216,22 @@ class ActionController extends Controller
 			throw new Exception('Došlo je do greške, molimo vas pokušajte ponovo');
 		}
 	}
+
+    public function actionKreirana($id)
+    {
+        $this->layout = 'main';
+        $action = Action::model()->findByPk($id);
+        $this->render('kreirana',array(
+            'model' => $action,
+        ));
+    }
+
+    public function actionPodrzana($id)
+    {
+        $this->layout = 'main';
+        $action = Action::model()->findByPk($id);
+        $this->render('podrzana',array(
+            'model' => $action,
+        ));
+    }
 }
