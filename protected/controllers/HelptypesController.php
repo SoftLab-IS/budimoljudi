@@ -1,6 +1,6 @@
 <?php
 
-class HelpController extends Controller
+class HelptypesController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -28,11 +28,11 @@ class HelpController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('create'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view','update'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -62,65 +62,20 @@ class HelpController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$this->layout = 'main';
-		$model=new Help;
-        $userModel = new User;
-		$locationModel = new Location('help');
-		$helpTypes = Helptypes::model()->findAll();
+		$model=new Helptypes;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		if(isset($_POST['User'], $_POST['Help'], $_POST['Location']))
+
+		if(isset($_POST['Helptypes']))
 		{
-			$userModel->attributes = $_POST['User'];
-			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
-			$userModel->type = User::USER_ROLE_VOLONTER;
-			$valid =$userModel->validate();
-			if($valid){
-				$userModel->save(false);
-				$locationModel->attributes = $_POST['Location'];
-				if($locationModel->validate())
-					$locationModel->save(false);
-				if(isset($_POST['type']))
-				{
-					foreach($_POST['type'] as $oneType)
-					{
-						$model->types .= $oneType;
-					}
-				}
-				else
-				{
-					$model->addError('type', "Trebate izabrati barem jedan tip pomoci");
-				}
-
-				$model->attributes=$_POST['Help'];
-				$model->user_id = $userModel->id;
-				$model->Location_id = $locationModel->id;
-
-				if($model->validate()){
-					$model->save(false);
-					if(isset($_POST['type']))
-					{
-						foreach($_POST['type'] as $oneType)
-						{
-							$helpHasTypes = new Helphastypes;
-							$helpHasTypes->help_id = $model->id;
-							$helpHasTypes->help_types_id = (int)$oneType;
-							$helpHasTypes->save();
-						}
-					}
-					$this->redirect(array('/'));
-				}
-			}
-
+			$model->attributes=$_POST['Helptypes'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
 		}
-
 
 		$this->render('create',array(
 			'model'=>$model,
-            'userModel'=>$userModel,
-			'locationModel'=>$locationModel,
-			'helpTypes'=>$helpTypes,
 		));
 	}
 
@@ -131,50 +86,20 @@ class HelpController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		if($id != Yii::app()->session['id'])
-			throw new Exception("Đe si poš'o!?");
-		$this->layout = 'main';
-		$model= Help::model()->findByAttributes(array('user_id'=>$id));
-		$userModel = User::model()->findByPk($model->user_id);
-		$locationModel = Location::model()->findByPk($model->Location_id);
-		$helpTypes = Helptypes::model()->findAll();
-		$checkedTypes = Helphastypes::model()->findAllByAttributes(array('help_id'=>$model->id));
+		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		if(isset($_POST['Location']))
-		{
-			$locationModel->attributes = $_POST['Location'];
-			if($locationModel->validate())
-				$locationModel->save(false);
-		}
-		if(isset($_POST['Help']))
-		{
-			$model->attributes=$_POST['Help'];
-			$model->Location_id = $locationModel->id;
-			if($model->save())
-			{
-				if(isset($_POST['type']))
-				{
-					foreach($_POST['type'] as $oneType)
-					{
-						$helpHasTypes = new Helphastypes;
-						$helpHasTypes->help_id = $model->id;
-						$helpHasTypes->help_types_id = (int)$oneType;
-						$helpHasTypes->save();
-					}
-				}
-				$this->redirect(array('/'));
-			}
 
+		if(isset($_POST['Helptypes']))
+		{
+			$model->attributes=$_POST['Helptypes'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
-			'userModel'=>$userModel,
-			'locationModel'=>$locationModel,
-			'helpTypes'=>$helpTypes,
-			'checkedTypes'=>$checkedTypes,
 		));
 	}
 
@@ -197,7 +122,7 @@ class HelpController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Help');
+		$dataProvider=new CActiveDataProvider('Helptypes');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -208,10 +133,10 @@ class HelpController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Help('search');
+		$model=new Helptypes('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Help']))
-			$model->attributes=$_GET['Help'];
+		if(isset($_GET['Helptypes']))
+			$model->attributes=$_GET['Helptypes'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -222,12 +147,12 @@ class HelpController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Help the loaded model
+	 * @return Helptypes the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Help::model()->findByPk($id);
+		$model=Helptypes::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -235,11 +160,11 @@ class HelpController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Help $model the model to be validated
+	 * @param Helptypes $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='help-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='helptypes-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

@@ -42,8 +42,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'city_ptt'); ?>
-		<?php echo $form->textField($model,'city_ptt'); ?>
+		<?php echo $form->label($model,'location_id'); ?>
+		<?php echo $form->textField($model,'location_id'); ?>
 	</div>
 
 	<div class="row">

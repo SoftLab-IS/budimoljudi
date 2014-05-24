@@ -1,30 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "action".
+ * This is the model class for table "help_has_types".
  *
- * The followings are the available columns in table 'action':
+ * The followings are the available columns in table 'help_has_types':
  * @property integer $id
- * @property string $title
- * @property string $time_start
- * @property string $description
- * @property integer $user_id
- * @property string $time_end
- * @property integer $Location_id
- * @property integer $number_of_participants
+ * @property integer $help_id
+ * @property integer $help_types_id
  *
  * The followings are the available model relations:
- * @property User $user
- * @property Location $location
+ * @property Help $help
+ * @property HelpTypes $helpTypes
  */
-class Action extends CActiveRecord
+class Helphastypes extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'action';
+		return 'help_has_types';
 	}
 
 	/**
@@ -35,13 +30,11 @@ class Action extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, Location_id, time_start, time_end', 'required'),
-			array('user_id, Location_id, number_of_participants', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>255),
-			array('time_start, description, time_end', 'safe'),
+			array('help_id, help_types_id', 'required'),
+			array('help_id, help_types_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, time_start, description, user_id, time_end, Location_id, number_of_participants', 'safe', 'on'=>'search'),
+			array('id, help_id, help_types_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,8 +46,8 @@ class Action extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'location' => array(self::BELONGS_TO, 'Location', 'Location_id'),
+			'help' => array(self::BELONGS_TO, 'Help', 'help_id'),
+			'helpTypes' => array(self::BELONGS_TO, 'HelpTypes', 'help_types_id'),
 		);
 	}
 
@@ -65,13 +58,8 @@ class Action extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Naslov',
-			'time_start' => 'Početak akcije',
-			'description' => 'Opis Akcije',
-			'user_id' => 'User',
-			'time_end' => 'Kraj akcije',
-			'Location_id' => 'Grad',
-			'number_of_participants' => 'Number Of Participants',
+			'help_id' => 'Help',
+			'help_types_id' => 'Help Types',
 		);
 	}
 
@@ -94,13 +82,8 @@ class Action extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('time_start',$this->time_start,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('time_end',$this->time_end,true);
-		$criteria->compare('Location_id',$this->Location_id);
-		$criteria->compare('number_of_participants',$this->number_of_participants);
+		$criteria->compare('help_id',$this->help_id);
+		$criteria->compare('help_types_id',$this->help_types_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -111,7 +94,7 @@ class Action extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Action the static model class
+	 * @return Helphastypes the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
