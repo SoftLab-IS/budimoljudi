@@ -41,16 +41,16 @@
 				<?php $this->widget('zii.widgets.CMenu',array(
 					'htmlOptions'=>array('class' => "nav navbar-nav navbar-right",),
 					'items'=>array(
-						array('label'=>'Ponudi pomoć', 'url'=>array('/help/create'), 'visible'=>!Yii::app()->user->checkAccess("ponudi_pomoc")),
+						array('label'=>'Ponudi pomoć', 'url'=>array('/help/create'), 'visible'=>Yii::app()->user->checkAccess("ponudi_pomoc")),
 						array('label'=>'Akcije', 'url'=>array('/action/index')),
                         array('label'=>'Poplave <i class="glyphicon glyphicon-bullhorn"></i>', 'url'=>array('/site/vazne_informacije'), 'linkOptions' => array('class' => 'menu-highlight')),
                         array('label'=>'Blog', 'url'=>array('/site/vijesti')),
 						//array('label'=>'Kontakt', 'url'=>array('/site/contact')),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                        array('label'=> '<i class="glyphicon glyphicon-user"></i> ' . Yii::app()->session['fullname'] . ' <i class="caret"></i>', 'url'=>'#', 'visible'=>Yii::app()->user->checkAccess("ponudi_pomoc"),
+                        array('label'=> '<i class="glyphicon glyphicon-user"></i> ' . Yii::app()->session['fullname'] . ' <i class="caret"></i>', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest,
                             'items' => array(
                                 array('label'=>'Moje akcije', 'url'=>'#'),
-                                array('label'=>'Uredi profil', 'url'=>array('/help/update/','id'=>Yii::app()->session['id'])),
+                                array('label'=>'Uredi profil', 'url'=>array('/help/update/','id'=>Yii::app()->session['id']),'visible'=>!Yii::app()->user->checkAccess("ponudi_pomoc")),
                                 array('label'=>'', 'url'=>'', 'itemOptions' => array('class' => 'divider')),
                                 array('label'=>'Odjavi me', 'url'=>array('/site/logout')),
                             ),

@@ -35,7 +35,7 @@ class Action extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, Location_id, time_start, time_end', 'required'),
+			array('title, user_id, Location_id, time_start, time_end', 'required'),
 			array('user_id, Location_id, number_of_participants', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('time_start, description, time_end', 'safe'),

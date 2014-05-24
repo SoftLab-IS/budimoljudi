@@ -13,7 +13,12 @@ $this->pageTitle=Yii::app()->name;
                 <p>Mnogi su izgubili sve. Pomozimo im da ponovo stanu na noge.</p>
             </div>
             <div class="col-sm-4 text-center">
-                <?php echo CHtml::link("Ponudi pomoć",array("help/create"), array('class'=>"btn btn-lg btn-primary btn-block")); ?>
+                <?php
+                    if(Yii::app()->user->checkAccess("ponudi_pomoc"))
+                        echo CHtml::link("Ponudi pomoć",array("help/create"), array('class'=>"btn btn-lg btn-primary btn-block"));
+                    else
+	                    echo CHtml::link("Ponudi pomoć",array("help/update",'id'=>Yii::app()->session['id']), array('class'=>"btn btn-lg btn-primary btn-block"));
+                ?>
                 <?php //echo CHtml::link("Pokreni akciju",array("action/create"), array('class'=>"btn btn-md btn-default btn-block")); ?>
             </div>
         </div>

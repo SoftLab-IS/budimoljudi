@@ -175,7 +175,7 @@ class CityController extends Controller
      * Salje ajaxom gradove za izabrani region
      */
     public function actionLoadcities() {
-        if((int)$_POST['region_id'] == -1)
+        if((int)$_POST['region_id'] == '')
             return false;
 
         $data=City::model()->findAll('region_id=:region_id',
@@ -183,7 +183,7 @@ class CityController extends Controller
 
         $data=CHtml::listData($data,'ptt','name');
 
-        echo "<option value='-1'>Svi gradovi</option>";
+        echo "<option value=''>Svi gradovi</option>";
         foreach($data as $value=>$city_name)
             echo CHtml::tag('option', array('value'=>$value),CHtml::encode($city_name),true);
     }
