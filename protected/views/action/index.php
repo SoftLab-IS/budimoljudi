@@ -22,10 +22,9 @@
             Završene akcije
         </div>
 	    <table class="table">
-		    <?php $i=1; foreach($model as $akcija): ?>
+		    <?php foreach($model as $akcija): ?>
 			    <?php if(strtotime(date('Y-m-d h:m:s'))>strtotime($akcija->time_end)): ?>
 				    <tr>
-					    <td><?php echo $i++; ?></td>
 					    <td><?php echo $akcija->title; ?></td>
 					    <td><?php echo City::getCityName($akcija->city_ptt); ?></td>
 				    </tr>
