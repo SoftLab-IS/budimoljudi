@@ -1,6 +1,6 @@
 <?php
 
-class ActionController extends Controller
+class ActionusersController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -28,11 +28,11 @@ class ActionController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update', 'ucesce'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,11 +51,8 @@ class ActionController extends Controller
 	 */
 	public function actionView($id)
 	{
-        $dataProvider=Action::model()->findAll(array('order'=>'id DESC'));
-		$this->layout = 'main';
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-            'actions'=>$dataProvider
 		));
 	}
 
@@ -65,33 +62,20 @@ class ActionController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$this->layout = 'main';
-		$model=new Action;
-		$userModel=new User;
+		$model=new Actionusers;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Action'],$_POST['User']))
+		if(isset($_POST['Actionusers']))
 		{
-			$userModel->attributes = $_POST['User'];
-			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
-			$valid =$userModel->validate();
-			if($valid){
-				$userModel->save(false);
-				$model->attributes=$_POST['Action'];
-				$model->time_start = date('Y-m-d h:m:s', strtotime($model->time_start));
-				$model->time_end = date('Y-m-d h:m:s', strtotime($model->time_end));
-				$model->user_id = $userModel->id;
-				if($model->validate()){
-					$model->save(false);
-					$this->redirect('view',array('id'=>$model->id));
-				}
-			}
+			$model->attributes=$_POST['Actionusers'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
 		}
+
 		$this->render('create',array(
 			'model'=>$model,
-			'userModel'=>$userModel,
 		));
 	}
 
@@ -107,9 +91,9 @@ class ActionController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Action']))
+		if(isset($_POST['Actionusers']))
 		{
-			$model->attributes=$_POST['Action'];
+			$model->attributes=$_POST['Actionusers'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -138,10 +122,9 @@ class ActionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$this->layout = 'main';
-		$dataProvider=Action::model()->findAll(array('order'=>'id DESC'));
+		$dataProvider=new CActiveDataProvider('Actionusers');
 		$this->render('index',array(
-			'model'=>$dataProvider,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -150,10 +133,10 @@ class ActionController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Action('search');
+		$model=new Actionusers('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Action']))
-			$model->attributes=$_GET['Action'];
+		if(isset($_GET['Actionusers']))
+			$model->attributes=$_GET['Actionusers'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -164,12 +147,12 @@ class ActionController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Action the loaded model
+	 * @return Actionusers the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Action::model()->findByPk($id);
+		$model=Actionusers::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -177,33 +160,14 @@ class ActionController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Action $model the model to be validated
+	 * @param Actionusers $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='action-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='actionusers-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
-		}
-	}
-
-	public function actionUcesce($id)
-	{
-		$actionUsers = new Actionusers;
-		$action = Action::model()->findByPk($id);
-		$actionUsers->action_id = $id;
-		$actionUsers->user_id = Yii::app()->session['id'];
-		if($actionUsers->validate() AND $action)
-		{
-			$actionUsers->save(false);
-			$action->number_of_participants++;
-			$action->update();
-			$this->redirect('/');
-		}
-		else
-		{
-			throw new Exception('Došlo je do greške, molimo vas pokušajte ponovo');
 		}
 	}
 }
