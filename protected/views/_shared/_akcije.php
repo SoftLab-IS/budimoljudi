@@ -16,7 +16,7 @@
 			<?php if(strtotime(date('Y-m-d h:m:s'))<strtotime($akcija->time_end)): ?>
 				<tr>
 					<td><?php echo CHtml::link($akcija->title, array('action/view','id'=>$akcija->id)); ?></td>
-					<td><?php echo City::getCityName($akcija->city_ptt); ?></td>
+					<td><?php echo City::getCityName($akcija->location->city_ptt); ?></td>
 					<td><?php echo date('d.m.Y. \u h:m<\s\u\p>\h</\s\u\p>',strtotime($akcija->time_start)); ?></td>
 <!--					<td>--><?php //echo CHtml::link('Detaljno...', array('action/view','id'=>$akcija->id), array('class'=>'btn btn-default')); ?><!--</td>-->
 				</tr>

@@ -8,6 +8,12 @@
         <h1>Ponudi pomoć</h1>
         <p>Opis nudjenja pomoci</p>
 
-<?php $this->renderPartial('_form', array('model'=>$model, 'userModel'=>$userModel, 'locationModel'=>$locationModel)); ?>
+<?php $this->renderPartial('_form', array(
+	'model'=>$model,
+	'userModel'=>$userModel,
+	'locationModel'=>$locationModel,
+	'helpTypes'=>$helpTypes,
+	'checkedTypes' => false,
+)); ?>
 
 </div>

@@ -29,8 +29,8 @@
 	<?php echo CHtml::encode($data->time_end); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('city_ptt')); ?>:</b>
-	<?php echo CHtml::encode($data->city_ptt); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('location_id')); ?>:</b>
+	<?php echo CHtml::encode($data->location_id); ?>
 	<br />
 
 	<?php /*

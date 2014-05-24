@@ -27,15 +27,16 @@
             </div>
             <div class="col-sm-12">
                 <?php echo $form->error($model,'type'); ?>
+	            <?php foreach($helpTypes as $h): ?>
                 <label class="checkbox">
-                    <input type="checkbox" name="type[]" value="smjestaj"/>Smještaj
+                    <input type="checkbox" name="type[]"
+                           value="<?php echo $h->id; ?>"
+	                        <?php if($checkedTypes)
+		                            foreach($checkedTypes as $t)
+			                            echo ($h->id == $t->help_types_id)? 'checked' : ''; ?>
+	                    /><?php echo $h->name; ?>
                 </label>
-                <label class="checkbox">
-                    <input type="checkbox" name="type[]" value="smjestaj"/>Hrana
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" name="type[]" value="smjestaj"/>Voda
-                </label>
+	            <?php endforeach; ?>
             </div>
         </div>
 
