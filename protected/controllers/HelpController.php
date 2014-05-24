@@ -72,6 +72,7 @@ class HelpController extends Controller
 		{
 			$userModel->attributes = $_POST['User'];
 			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
+			$userModel->type = User::USER_ROLE_VOLONTER;
 			$valid =$userModel->validate();
 			if($valid){
 				$userModel->save(false);
