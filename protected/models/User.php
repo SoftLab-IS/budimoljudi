@@ -19,7 +19,9 @@
 class User extends CActiveRecord
 {
 	const USER_ROLE_VOLONTER = 'volonter';
-	const USER_ROLE_ = 'volonter';
+	const USER_ROLE_POKRETAC = 'pokretac';
+	const USER_ROLE_KOMPLETAN = 'kompletan';
+	const USER_ROLE_ADMIN = 'admin';
 
 	public $passwordRepeat;
 	/**

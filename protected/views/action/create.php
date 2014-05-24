@@ -7,4 +7,4 @@
 <h1>Akcije</h1>
 <p>Opis akcija</p>
 
-<?php $this->renderPartial('_form', array('model'=>$model,'userModel'=>$userModel)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'userModel'=>$userModel, 'locationModel'=>$locationModel)); ?>

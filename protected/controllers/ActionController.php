@@ -68,22 +68,28 @@ class ActionController extends Controller
 		$this->layout = 'main';
 		$model=new Action;
 		$userModel=new User('create');
+		$locationModel =new Location('action');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Action'],$_POST['User']))
+		if(isset($_POST['Action'],$_POST['User'],$_POST['Location']))
 		{
 			$userModel->attributes = $_POST['User'];
 			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
 			$userModel->passwordRepeat = ($userModel->passwordRepeat)? md5($userModel->passwordRepeat) : null;
+			$userModel->type = User::USER_ROLE_POKRETAC;
 			$valid =$userModel->validate();
 			if($valid){
 				$userModel->save(false);
+				$locationModel->attributes = $_POST['Location'];
+				if($locationModel->validate())
+					$locationModel->save(false);
 				$model->attributes=$_POST['Action'];
 				$model->time_start = date('Y-m-d h:m:s', strtotime($model->time_start));
 				$model->time_end = date('Y-m-d h:m:s', strtotime($model->time_end));
 				$model->user_id = $userModel->id;
+				$model->Location_id = $locationModel->id;
 				if($model->validate()){
 					$model->save(false);
 					$this->redirect(array('view', 'id'=>$model->id));
@@ -93,6 +99,7 @@ class ActionController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 			'userModel'=>$userModel,
+			'locationModel'=>$locationModel,
 		));
 	}
 
@@ -104,6 +111,7 @@ class ActionController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$locationModel = Location::model()->findByPk($model->id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -117,6 +125,7 @@ class ActionController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+			'locationModel'=>$locationModel,
 		));
 	}
 

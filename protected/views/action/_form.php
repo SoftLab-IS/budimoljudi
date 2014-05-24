@@ -99,57 +99,7 @@
             <?php echo $form->error($model,'time_end'); ?>
         </div>
 
-        <div class="col-sm-4">
-            <?php echo CHtml::label("Država",'country'); ?>
-        </div>
-        <div class="col-sm-8">
-            <?php
-            $list = CHtml::listData(State::model()->findAll(), 'id', 'name');
-            echo CHtml::dropDownList('country', '', $list,
-                array(
-                    'class'=>'form-control',
-                    'prompt'=>'Izaberite državu',
-                    'ajax' => array(
-                        'type'=>'POST',
-                        'url'=>Yii::app()->createUrl('region/loadregions'), //or $this->createUrl('loadcities') if '$this' extends CController
-                        'update'=>'#region', //or 'success' => 'function(data){...handle the data in the way you want...}',
-                        'data'=>array('country'=>'js:this.value'),
-                    )));
-            ?>
-        </div>
-        <div class="col-sm-4">
-            <?php echo CHtml::label("Regija",'region'); ?>
-        </div>
-        <div class="col-sm-8">
-            <?php
-            $country = 1;
-            $list = CHtml::listData(Region::model()->findAllByAttributes(array("state_id"=>$country)), 'id', 'name');
-            echo CHtml::dropDownList('region', '', $list,
-                array(
-                    'class'=>'form-control',
-                    'prompt'=>'Sve regije',
-                    'ajax' => array(
-                        'type'=>'POST',
-                        'url'=>Yii::app()->createUrl('city/loadcities'), //or $this->createUrl('loadcities') if '$this' extends CController
-                        'update'=>'#Action_city_ptt', //or 'success' => 'function(data){...handle the data in the way you want...}',
-                        'data'=>array('region'=>'js:this.value'),
-                    )));
-            ?>
-        </div>
-        <div class="col-sm-4">
-            <?php echo $form->labelEx($model,'city_ptt'); ?>
-        </div>
-        <div class="col-sm-8">
-            <?php
-
-            echo CHtml::dropDownList('Action[city_ptt]', $model, array(),
-                array(
-                    'class'=>'form-control',
-                    'empty' => 'Svi gradovi'
-                ));
-            ?>
-            <?php echo $form->error($model,'city_ptt', array('class'=>'alert alert-danger')); ?>
-        </div>
+	    <?php $this->renderPartial('//_shared/_location_form', array('form'=>$form, 'locationModel'=>$locationModel)); ?>
     </div>
 
 	<?php $this->renderPartial('//_shared/_licne_informacije', array('form'=>$form, 'userModel'=>$userModel)); ?>
