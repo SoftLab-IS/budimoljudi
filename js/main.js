@@ -10,9 +10,11 @@ $(document).ready(function(){
  */
 function bindDateTimePicker()
 {
-    var format = 'd.m.Y. \\u H:m';
+    var format = 'd.m.Y';
     var dayOfWeekStart = 1;
     var lang = 'sr';
+    var formatTime = 'H:m';
+    var formatDate = 'd.m.Y'
     var i18n = {
         sr:{
             months:[
@@ -27,28 +29,34 @@ function bindDateTimePicker()
         }
     };
 
-    $('.datetimepicker#start-date').datetimepicker({
+    $('#start-date').datetimepicker({
         format: format,
+        formatTime: formatTime,
+        formatDate: formatDate,
         dayOfWeekStart: dayOfWeekStart,
         lang: lang,
         i18n: i18n,
+        minDate: 0,
+        time: false,
         onShow: function(ct){
             this.setOptions({
-                maxDate: $('.datetimepicker#end-date').val() ? $('.datetimepicker#end-date').val() : false,
-                maxTime: $('.datetimepicker#end-date').val() ? $('.datetimepicker#end-date').val() : false
+                maxDate: $('#end-date').val() ? $('#end-date').val() : false
             })
         }
     });
 
-    $('.datetimepicker#end-date').datetimepicker({
+    $('#end-date').datetimepicker({
         format: format,
+        formatTime: formatTime,
+        formatDate: formatDate,
         dayOfWeekStart: dayOfWeekStart,
         lang: lang,
         i18n: i18n,
+        minDate: 0,
+        time: false,
         onShow: function(ct){
             this.setOptions({
-                minDate: $('.datetimepicker#start-date').val() ? $('.datetimepicker#start-date').val() : false,
-                minTime: $('.datetimepicker#start-date').val() ? $('.datetimepicker#start-date').val() : false
+                minDate: $('#start-date').val() ? $('#start-date').val() : false
             })
         }
     });
