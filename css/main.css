@@ -121,6 +121,14 @@ body {
 
     }
 
+/* PAGE */
+
+.page-header {
+    margin: 0 0 3em;
+    padding: 0;
+    border: none;
+}
+
 /* FRONTPAGE */
 
 .cta-holder {
@@ -153,6 +161,12 @@ article h3 em {
     color: #666;
     font-size: .7rem;
     padding-top: .2rem;
+}
+
+/* HELP */
+
+label.checkbox {
+    padding-left: 0;
 }
 
 /* SLIDER */

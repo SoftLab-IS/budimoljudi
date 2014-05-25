@@ -2,20 +2,14 @@
 /* @var $this ActionController */
 /* @var $model Action */
 
-$this->breadcrumbs=array(
-	'Actions'=>array('index'),
-	$model->title=>array('view','id'=>$model->id),
-	'Update',
-);
-
-$this->menu=array(
-	array('label'=>'List Action', 'url'=>array('index')),
-	array('label'=>'Create Action', 'url'=>array('create')),
-	array('label'=>'View Action', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Action', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Update Action <?php echo $model->id; ?></h1>
+<div class="col-sm-12">
+    <header class="page-header">
+        <h1 class="row">
+            <span class="col-sm-10">Izmjena akcije</span>
+        </h1>
+    </header>
+</div>
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'locationModel'=>$locationModel)); ?>

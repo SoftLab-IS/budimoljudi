@@ -13,7 +13,7 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 	<link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/bootstrap.min.css"/>
-	<!--<link rel="stylesheet" href="css/bootstrap-theme.min.css"/>-->
+    <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/iCheck/square/blue.css" >
     <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/jquery.datetimepicker.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/normalize.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/main.css">
@@ -34,7 +34,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="<?php echo Yii::app()->getBaseUrl(true); ?>">Budimo Ljudi</a>
+				<a class="navbar-brand logo" href="<?php echo Yii::app()->getBaseUrl(true); ?>">Budimo Ljudi</a><span class="label label-info"> beta</span>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<?php $this->widget('zii.widgets.CMenu',array(
@@ -89,6 +89,7 @@
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/bootstrap.min.js"></script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/plugins.js"></script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/vendor/jquery.datetimepicker.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/vendor/iCheck/icheck.min.js"></script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/main.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

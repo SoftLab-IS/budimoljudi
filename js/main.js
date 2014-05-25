@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
-
-   bindDateTimePicker();
+    bindDateTimePicker();
+    bindICheck();
 });
 
 
@@ -78,5 +78,14 @@ function bindDateTimePicker()
                 minTime: $('#start-time').val() ? $('#start-time').val() : false
             })
         }
+    });
+}
+
+function bindICheck()
+{
+    $('input[type="checkbox"]').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '0%'
     });
 }

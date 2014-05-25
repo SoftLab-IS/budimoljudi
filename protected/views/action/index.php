@@ -3,12 +3,18 @@
 /* @var $model Action */
 ?>
 
-<div class="col-sm-10">
-    <h1>Akcije</h1>
-    <p>Opis akcija</p>
-</div>
-<div class="col-sm-2 text-right">
-    <?php echo CHtml::link('Pokreni akciju', array('action/create'), array('class' => 'btn btn-primary')); ?>
+<div class="col-sm-12">
+    <header class="page-header">
+        <h1 class="row">
+            <span class="col-sm-10">Akcije pomoći</span>
+            <div class="col-sm-2 text-right">
+                <?php echo CHtml::link('Pokrenite akciju', array('action/create'), array('class' => 'btn btn-primary')); ?>
+            </div>
+        </h1>
+        <p class="page-description">
+            Akcije pomoći su u potpunosti volonterske. Bilo koji dobrovoljac se može prijaviti na akciju.
+        </p>
+    </header>
 </div>
 
 <div class="col-md-8">

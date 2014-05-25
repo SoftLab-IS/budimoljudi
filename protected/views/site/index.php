@@ -22,8 +22,6 @@ $this->pageTitle=Yii::app()->name;
                     ?>
                     <?php //echo CHtml::link("Pokreni akciju",array("action/create"), array('class'=>"btn btn-md btn-default btn-block")); ?>
                 </div>
-
-
         </div>
     </div>
 </div>
@@ -61,14 +59,27 @@ $this->pageTitle=Yii::app()->name;
 <div class="col-md-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Informacije
+			Pozovite ili pošaljite prazan SMS za pomoć stanovništvu ugroženom od poplava
 		</div>
 		<div class="panel-body">
-			<p>fdg
-				dfg
-				sd
-				f
-				gsd</p>
+			<div class="col-sm-3">
+                <h3>Bosna i Hercegovina</h3>
+                m:tel - <strong>1458</strong> (1 KM)<br/>
+                BH Telekom - <strong>090 291 032</strong> (2 KM)<br/>
+                HT Mostar - <strong>092 890 830</strong> (2 KM)
+			</div>
+            <div class="col-sm-3">
+                <h3>Srbija</h3>
+                Sve mreže - <strong>1003</strong> (100 RSD)<br/>
+            </div>
+            <div class="col-sm-3">
+                <h3>Hrvatska</h3>
+                Sve mreže - <strong>060 90 11</strong> (6,25 Kn)<br/>
+            </div>
+            <div class="col-sm-3">
+                <h3>Crna Gora</h3>
+                Sve mreže - <strong>14543</strong> (1 &euro;)<br/>
+            </div>
 		</div>
 	</div>
 </div>
