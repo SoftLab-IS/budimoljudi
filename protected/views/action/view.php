@@ -34,8 +34,11 @@
                     <p>Budite prvi volonter koji će podržati ovu akciju</p>
                     <?php endif; ?>
                 </div>
-
-                <?php echo CHtml::link('Podrži akciju', array('action/ucesce', 'id'=>$model->id), array('class'=>'btn btn-success')) ?>
+				<?php if(Actionusers::is_user_in_action($model->id,Yii::app()->session['id']))
+						  echo 'Prijavljeni ste na ovu akciju';
+					  else
+						  echo CHtml::link('Podrži akciju', array('action/ucesce', 'id'=>$model->id), array('class'=>'btn btn-success'));
+				?>
             </div>
         </div>
     </div>

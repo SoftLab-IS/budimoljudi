@@ -60,7 +60,7 @@
         </div>
     </div>
 
-	<?php if(Yii::app()->controller->action->id != 'update') $this->renderPartial('//_shared/_licne_informacije', array('form'=>$form, 'userModel'=>$userModel)); ?>
+	<?php if(Yii::app()->controller->action->id != 'update' && Yii::app()->user->isGuest) $this->renderPartial('//_shared/_licne_informacije', array('form'=>$form, 'userModel'=>$userModel)); ?>
 
     <div class="col-sm-12 text-center buttons">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Sačuvaj svoj profil' : 'Sačuvaj', array('class'=>'btn btn-primary btn-md')); ?>

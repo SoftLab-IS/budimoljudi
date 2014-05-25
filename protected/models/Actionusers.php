@@ -100,4 +100,15 @@ class Actionusers extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public static function is_user_in_action($action,$user)
+	{
+		$model = Actionusers::model()->findByAttributes(array(
+			'action_id'=>$action,
+			'user_id'=>$user,
+		));
+		if($model)
+			return true;
+		return false;
+	}
 }

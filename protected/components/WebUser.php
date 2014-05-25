@@ -17,7 +17,7 @@ class WebUser extends CWebUser
 		$role = $this->getState("roles");
 
 		if($operation==='ponudi_pomoc') {
-			if($role === User::USER_ROLE_VOLONTER OR $role === User::USER_ROLE_KOMPLETAN){
+			if($role === User::USER_ROLE_VOLONTER OR $role === User::USER_ROLE_KOMPLETAN OR User::USER_ROLE_ADMIN){
 				return false;
 			}
 			return true;
@@ -27,6 +27,12 @@ class WebUser extends CWebUser
 			if($role === User::USER_ROLE_VOLONTER OR $role === User::USER_ROLE_KOMPLETAN){
 				return true;
 			}
+			return false;
+		}
+
+		if($operation==='admin') {
+			if($role === User::USER_ROLE_ADMIN)
+				return true;
 			return false;
 		}
 
@@ -44,5 +50,15 @@ class WebUser extends CWebUser
 		}
 		// allow access if the operation request is the current user's role
 		return ($operation === $role);
+	}
+	public function isAdmin() {
+		if (empty($this->id)) {
+			// Not identified => no rights
+			return false;
+		}
+		$role = $this->getState("roles");
+		if($role === User::USER_ROLE_ADMIN)
+			return true;
+		return false;
 	}
 }
