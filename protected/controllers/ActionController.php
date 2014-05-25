@@ -153,9 +153,11 @@ class ActionController extends Controller
         $criteria = new CDbCriteria;
         $criteria -> condition = "time_end < :today";
         $criteria -> params = array(':today' => strtotime(date('Y-m-d H:i:s')));
+		$criteria -> order = 'id DESC';
+		$finishedActions = Action::model()->findAll($criteria);
+		$criteria -> condition = "time_end > :today";
+        $dataProvider = Action::model()->findAll($criteria);
 
-        $dataProvider = Action::model()->findAll(array('order'=>'id DESC'));
-        $finishedActions = Action::model()->findAll($criteria);
 		$this->render('index',array(
 			'model' => $dataProvider,
             'finishedActions' => $finishedActions,
@@ -166,12 +168,16 @@ class ActionController extends Controller
 	{
 		$this->layout = 'main';
 		$criteria = new CDbCriteria;
-		$criteria->condition = 'user_id=:user';
-		$criteria->params = array(':user'=>Yii::app()->user->id);
-		$criteria->order = 'id DESC';
-		$dataProvider=Action::model()->findAll($criteria);
+		$criteria -> condition = "time_end < :today AND user_id=:user";
+		$criteria -> params = array(':today' => strtotime(date('Y-m-d H:i:s')),':user'=>Yii::app()->user->id);
+		$criteria -> order = 'id DESC';
+		$finishedActions = Action::model()->findAll($criteria);
+		$criteria -> condition = "time_end > :today AND user_id=:user";
+		$dataProvider = Action::model()->findAll($criteria);
+
 		$this->render('index',array(
 			'model'=>$dataProvider,
+			'finishedActions' => $finishedActions,
 		));
 	}
 
