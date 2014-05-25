@@ -68,18 +68,27 @@ class HelpController extends Controller
 		$locationModel = new Location('help');
 		$helpTypes = Helptypes::model()->findAll();
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-		if(isset($_POST['User'], $_POST['Help'], $_POST['Location']))
-		{
+		if(Yii::app()->user->isGuest and $_POST['User']) {
 			$userModel->attributes = $_POST['User'];
 			$userModel->type = User::USER_ROLE_VOLONTER;
 			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
 			$userModel->passwordRepeat = ($userModel->passwordRepeat)? md5($userModel->passwordRepeat) : null;
 			$valid =$userModel->validate();
-
-			if($valid){
+			if($valid)
 				$userModel->save(false);
+		}
+		else {
+			$userModel = User::model()->findByPk(Yii::app()->user->id);
+			$userModel->type = User::USER_ROLE_KOMPLETAN;
+			$userModel->update();
+			$valid = true;
+		}
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		if(isset($_POST['Help'], $_POST['Location']))
+		{
+			if($valid){
 				$locationModel->attributes = $_POST['Location'];
 				if($locationModel->validate())
 					$locationModel->save(false);

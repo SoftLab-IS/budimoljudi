@@ -15,7 +15,7 @@ $this->pageTitle=Yii::app()->name;
 
                 <div class="col-sm-8 col-sm-push-4">
                     <?php
-                        if(Yii::app()->user->checkAccess("ponudi_pomoc"))
+                        if(!Yii::app()->user->haveHelp())
                             echo CHtml::link("Ponudite pomoć",array("help/create"), array('class'=>"btn btn-lg btn-primary btn-block"));
                         else
                             echo CHtml::link("Ponudite pomoć",array("help/update",'id'=>Yii::app()->session['id']), array('class'=>"btn btn-lg btn-primary btn-block"));
