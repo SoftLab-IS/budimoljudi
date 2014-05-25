@@ -3,7 +3,6 @@
 /* @var $model Action */
 ?>
 
-
 <div class="col-sm-10">
     <h1>Akcije</h1>
     <p>Opis akcija</p>
@@ -22,14 +21,22 @@
             Završene akcije
         </div>
 	    <table class="table">
-		    <?php foreach($model as $akcija): ?>
-			    <?php if(strtotime(date('Y-m-d h:m:s'))>strtotime($akcija->time_end)): ?>
-				    <tr>
-					    <td><?php echo $akcija->title; ?></td>
-					    <td><?php echo City::getCityName($akcija->city_ptt); ?></td>
-				    </tr>
-			    <?php endif; ?>
-		    <?php endforeach; ?>
+		    <?php
+                if($finishedActions):
+                    foreach($finishedActions as $finishedAction):
+            ?>
+                        <tr>
+                            <td><?php echo $finishedAction->title; ?></td>
+                            <td><?php echo City::getCityName($finishedAction->location->city_ptt); ?></td>
+                        </tr>
+		    <?php
+                    endforeach;
+                else:
+            ?>
+                    <tr>
+                        <td>Ni jedna akcija još nije završena.</td>
+                    </tr>
+            <?php endif; ?>
 	    </table>
     </div>
 </div>

@@ -148,10 +148,17 @@ class ActionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$this->layout = 'main';
-		$dataProvider=Action::model()->findAll(array('order'=>'id DESC'));
+        $this->layout = 'main';
+
+        $criteria = new CDbCriteria;
+        $criteria -> condition = "time_end < :today";
+        $criteria -> params = array(':today' => strtotime(date('Y-m-d H:i:s')));
+
+        $dataProvider = Action::model()->findAll(array('order'=>'id DESC'));
+        $finishedActions = Action::model()->findAll($criteria);
 		$this->render('index',array(
-			'model'=>$dataProvider,
+			'model' => $dataProvider,
+            'finishedActions' => $finishedActions,
 		));
 	}
 

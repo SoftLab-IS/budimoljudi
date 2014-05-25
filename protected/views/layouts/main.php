@@ -25,7 +25,6 @@
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 <div class="container">
-
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
@@ -47,7 +46,7 @@
                         array('label'=>'Blog', 'url'=>array('/site/vijesti')),
 						//array('label'=>'Kontakt', 'url'=>array('/site/contact')),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                        array('label'=> '<i class="glyphicon glyphicon-user"></i> ' . Yii::app()->session['fullname'] . ' <i class="caret"></i>', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest,
+                        array('label'=> Yii::app()->session['fullname'] . ' <i class="caret"></i>', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest,
                             'items' => array(
                                 array('label'=>'Moje akcije', 'url'=>array('action/moje_akcije')),
                                 array('label'=>'Uredi profil', 'url'=>array('/help/update/','id'=>Yii::app()->session['id']),'visible'=>!Yii::app()->user->checkAccess("ponudi_pomoc")),
@@ -81,7 +80,6 @@
                 <p class="copyright">Copyright Budimo Ljudi &copy; 2014</p>
                 <p class="credits">Developed by <?php echo CHtml::link('Evolution Web Studio', 'http://evolution.rs.ba', array('target' => '_blank')); ?> </p>
             </div>
-
 		</footer>
 	</div>
 </div>
