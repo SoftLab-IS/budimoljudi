@@ -73,15 +73,30 @@ class ActionController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Action'],$_POST['User'],$_POST['Location']))
+		if(isset($_POST['Action'],$_POST['Location']))
 		{
-			$userModel->attributes = $_POST['User'];
-			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
-			$userModel->passwordRepeat = ($userModel->passwordRepeat)? md5($userModel->passwordRepeat) : null;
-			$userModel->type = User::USER_ROLE_POKRETAC;
-			$valid =$userModel->validate();
-			if($valid){
-				$userModel->save(false);
+			if(isset($_POST['User']))
+			{
+				$userModel->attributes = $_POST['User'];
+				$userModel->password = ($userModel->password)? md5($userModel->password) : null;
+				$userModel->passwordRepeat = ($userModel->passwordRepeat)? md5($userModel->passwordRepeat) : null;
+				$userModel->type = User::USER_ROLE_POKRETAC;
+				$valid =$userModel->validate();
+				if($valid){
+					$userModel->save(false);
+				}
+			}
+			elseif(!Yii::app()->user->isGuest)
+			{
+				$userModel = User::model()->findByPk(Yii::app()->user->id);
+				$userModel->type = User::USER_ROLE_KOMPLETAN;
+				Yii::app()->user->setState('roles', $userModel->type);
+				$userModel->update();
+				$valid = true;
+			}
+
+			if($valid)
+			{
 				$locationModel->attributes = $_POST['Location'];
 				if($locationModel->validate())
 					$locationModel->save(false);

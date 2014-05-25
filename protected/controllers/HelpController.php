@@ -68,9 +68,10 @@ class HelpController extends Controller
 		$locationModel = new Location('help');
 		$helpTypes = Helptypes::model()->findAll();
 
-		if(Yii::app()->user->isGuest and $_POST['User']) {
+		if(Yii::app()->user->isGuest and isset($_POST['User'])) {
 			$userModel->attributes = $_POST['User'];
 			$userModel->type = User::USER_ROLE_VOLONTER;
+			$this->setState('roles', $userModel->type);
 			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
 			$userModel->passwordRepeat = ($userModel->passwordRepeat)? md5($userModel->passwordRepeat) : null;
 			$valid =$userModel->validate();
@@ -78,10 +79,14 @@ class HelpController extends Controller
 				$userModel->save(false);
 		}
 		else {
-			$userModel = User::model()->findByPk(Yii::app()->user->id);
-			$userModel->type = User::USER_ROLE_KOMPLETAN;
-			$userModel->update();
-			$valid = true;
+			if(!Yii::app()->user->isGuest){
+				$userModel = User::model()->findByPk(Yii::app()->user->id);
+				$userModel->type = User::USER_ROLE_KOMPLETAN;
+				Yii::app()->user->setState('roles', $userModel->type);
+				$userModel->update();
+				$valid = true;
+			}
+
 		}
 
 		// Uncomment the following line if AJAX validation is needed
@@ -120,7 +125,7 @@ class HelpController extends Controller
 							$helpHasTypes->save();
 						}
 					}
-					$this->redirect(array('/'));
+					$this->redirect(array('kreirana', 'id' => $model->id));
 				}
 			}
 
