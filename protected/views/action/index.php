@@ -12,7 +12,11 @@
             </div>
         </h1>
         <p class="page-description">
-            Akcije pomoći su u potpunosti volonterske. Bilo koji dobrovoljac se može prijaviti na akciju.
+	        <?php if(Yii::app()->controller->action->id === 'moje_akcije')
+	                    echo "Moje akcije.";
+	              else
+	                    echo "Akcije pomoći su u potpunosti volonterske. Bilo koji dobrovoljac se može prijaviti na akciju.";
+	        ?>
         </p>
     </header>
 </div>
