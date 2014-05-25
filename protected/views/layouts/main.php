@@ -48,8 +48,9 @@
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                         array('label'=> Yii::app()->session['fullname'] . ' <i class="caret"></i>', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest,
                             'items' => array(
-                                array('label'=>'Moje akcije', 'url'=>'#'),
+                                array('label'=>'Moje akcije', 'url'=>array('action/moje_akcije')),
                                 array('label'=>'Uredi profil', 'url'=>array('/help/update/','id'=>Yii::app()->session['id']),'visible'=>!Yii::app()->user->checkAccess("ponudi_pomoc")),
+                                array('label'=>'Uredi blog', 'url'=>array('/post/admin'),'visible'=>Yii::app()->user->checkAccess("admin")),
                                 array('label'=>'', 'url'=>'', 'itemOptions' => array('class' => 'divider')),
                                 array('label'=>'Odjavi me', 'url'=>array('/site/logout')),
                             ),

@@ -32,7 +32,7 @@ class ActionController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update', 'ucesce', 'kreirana', 'podrzana'),
+				'actions'=>array('update', 'ucesce', 'kreirana', 'podrzana', 'moje_akcije'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -159,6 +159,19 @@ class ActionController extends Controller
 		$this->render('index',array(
 			'model' => $dataProvider,
             'finishedActions' => $finishedActions,
+		));
+	}
+
+	public function actionMoje_akcije()
+	{
+		$this->layout = 'main';
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'user_id=:user';
+		$criteria->params = array(':user'=>Yii::app()->user->id);
+		$criteria->order = 'id DESC';
+		$dataProvider=Action::model()->findAll($criteria);
+		$this->render('index',array(
+			'model'=>$dataProvider,
 		));
 	}
 
