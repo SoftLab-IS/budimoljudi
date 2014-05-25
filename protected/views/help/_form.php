@@ -15,8 +15,6 @@
         'enableAjaxValidation'=>false,
     )); ?>
 
-    <small class="note">Polja sa <span class="required">*</span> su obavezna.</small>
-
     <?php echo $form->errorSummary($model, null, null, array('class'=>'alert alert-danger')); ?>
 
     <div class="row">

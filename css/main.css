@@ -104,6 +104,10 @@ body {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
+textarea {
+    min-height: 120px;
+}
+
 /* MAIN MENU */
 
 .navbar-brand {

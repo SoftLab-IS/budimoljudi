@@ -40,30 +40,34 @@
     <strong>Account:</strong> RS35 9085 0461 9019 3230 80</br>
     <strong>Purpose:</strong> Pomoć poplavljenim područjima</br>
 
-    <p>Humanitarni brojevi telefona</p>
+    <p>Humanitarni broj telefona</p>
     <strong>MTS, VIP, Telenor</strong> 1003 (prazan SMS)
 </div>
 
 <div class="col-sm-4">
     <h2>Hrvatska</h2>
-    <s>
         <p>
-            Serbia Info (USD transactions) Ministarstvo finansija uprava za trezor
+            Privredna banka
         </p>
-
-        <strong>Address:</strong> Pop Lukina 7-9 RS – 11000 Beograd</br>
-        <strong>SWIFT:</strong> BKTRUS33</br>
-        <strong>Account:</strong> RS35 9085 0461 9019 3230 80</br>
-        <strong>Purpose:</strong> Pomoć poplavljenim područjima</br>
+        <strong>IBAN:</strong> HR 6923400091511555516</br>
+        <strong>SWIFT:</strong> PBZGHR2X</br>
+        <strong>Poziv na broj:</strong> 08</br>
 
         <p>
-            Serbia Info (EUR transaction) Ministarstvo finansija uprava za trezor
+            Hrvatska poštanska banka
         </p>
-        <strong>Address:</strong> Pop Lukina 7-9 RS – 11000 Beograd</br>
-        <strong>SWIFT:</strong> DEUTDEFF</br>
-        <strong>Account:</strong> RS35 9085 0461 9019 3230 80</br>
-        <strong>Purpose:</strong> Pomoć poplavljenim područjima</br>
+        <strong>IBAN:</strong> HR 7023900011500085181</br>
+        <strong>SWIFT:</strong> HPBZHR2X</br>
+        <strong>Poziv na broj:</strong> 08</br>
 
-        <p>Humanitarni brojevi telefona</p>
-        <strong>MTS, VIP, Telenor</strong> 1003 (prazan SMS)</s>
+    <p>
+        Zagrebačka banka
+    </p>
+    <strong>IBAN:</strong> HR 5123600001501495626</br>
+    <strong>SWIFT:</strong> ZABAHR2X</br>
+    <strong>Poziv na broj:</strong> 08</br>
+
+        <p>Humanitarni broj telefona</p>
+        <strong>Sve mreže</strong> 060 90 11
+
 </div>

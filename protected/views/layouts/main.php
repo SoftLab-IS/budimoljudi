@@ -7,8 +7,29 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Budimo Ljudi</title>
-	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- for Google -->
+    <meta name="description" content="<?php echo Yii::app()->params->meta['description']; ?>" />
+    <meta name="keywords" content="<?php echo Yii::app()->params->meta['keywords']; ?>" />
+
+    <meta name="author" content="" />
+    <meta name="copyright" content="2014" />
+    <meta name="application-name" content="Budimo Ljudi" />
+
+    <!-- for Facebook -->
+    <meta property="og:title" content="<?php echo Yii::app()->params->meta['title']; ?>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="<?php echo Yii::app()->getBaseUrl(true) . '/img/' . Yii::app()->params->meta['image']; ?>" />
+    <meta property="og:url" content="<?php echo Yii::app()->params->meta['url']; ?>" />
+    <meta property="og:description" content="<?php echo Yii::app()->params->meta['description']; ?>" />
+    <meta property="article:publisher" content="http://www.facebook.com/humaniljudi" />
+
+    <!-- for Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="<?php echo Yii::app()->params->meta['title']; ?>" />
+    <meta name="twitter:description" content="<?php echo Yii::app()->params->meta['description']; ?>" />
+    <meta name="twitter:image" content="<?php echo Yii::app()->getBaseUrl(true) . '/img/' . Yii::app()->params->meta['image']; ?>" />
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 

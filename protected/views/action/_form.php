@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form-wrapper">
+<div class="form-wrapper col-sm-12">
 
     <?php $form=$this->beginWidget('CActiveForm', array(
         'id'=>'action-form',
@@ -15,57 +15,49 @@
         'enableAjaxValidation'=>false,
     )); ?>
 
-    <div class="col-sm-12">
-        <small class="note">Polja sa <span class="required">*</span> su obavezna.</small>
-    </div>
+    <?php echo $form->errorSummary($model, array('class' => 'alert alert-danger')); ?>
 
-    <?php echo $form->errorSummary($model); ?>
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="">
+                <?php echo $form->labelEx($model,'title'); ?>
+                <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255, 'class' => 'form-control')); ?>
+                <?php echo $form->error($model,'title'); ?>
+            </div>
+            <div class="">
+                <?php echo $form->labelEx($model,'description'); ?>
+                <?php echo $form->textarea($model,'description',array('class' => 'form-control')); ?>
+                <?php echo $form->error($model,'description'); ?>
+            </div>
+        </div>
 
-    <div class="col-sm-7">
-        <div class="form-section-heading">
-            <h3>Oblast</h3>
-            <p>Izeberite oblast u kojoj bi ste mogli djelovati</p>
-        </div>
-        <div class="col-sm-12">
-            <?php echo $form->labelEx($model,'title'); ?>
-            <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model,'title'); ?>
-        </div>
-        <div class="col-md-12">
-            <?php echo $form->labelEx($model,'description'); ?>
-            <?php echo $form->textarea($model,'description',array('class' => 'form-control')); ?>
-            <?php echo $form->error($model,'description'); ?>
-        </div>
-    </div>
-
-    <div class="col-sm-5">
-        <div class="form-section-heading">
-            <h3>Oblast</h3>
-            <p>Izeberite oblast u kojoj bi ste mogli djelovati</p>
-        </div>
-        <div class="col-sm-4">
-            <?php echo $form->labelEx($model,'time_start'); ?>
-        </div>
         <div class="col-sm-5">
-            <input type="text" placeholder="<?php echo date('d.m.Y'); ?>" class="form-control" id="start-date" name="d_start"/>
-            <?php echo $form->error($model,'time_start'); ?>
-        </div>
-        <div class="col-sm-3">
-            <input type="text" placeholder="<?php echo date('H:i'); ?>" class="form-control" id="start-time" name="t_start"/>
-        </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <?php echo $form->labelEx($model,'time_start'); ?>
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" placeholder="<?php echo date('d.m.Y'); ?>" class="form-control" id="start-date" name="d_start"/>
+                    <?php echo $form->error($model,'time_start'); ?>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" placeholder="<?php echo date('H:i'); ?>" class="form-control" id="start-time" name="t_start"/>
+                </div>
 
-        <div class="col-sm-4">
-            <?php echo $form->labelEx($model,'time_end'); ?>
-        </div>
-        <div class="col-sm-5">
-            <input type="text" placeholder="<?php echo date('d.m.Y'); ?>" class="form-control" id="end-date" name="d_end"/>
-            <?php echo $form->error($model,'time_end'); ?>
-        </div>
-        <div class="col-sm-3">
-            <input type="text" placeholder="<?php echo date('H:i'); ?>" class="form-control" id="end-time" name="t_end"/>
-        </div>
+                <div class="col-sm-4">
+                    <?php echo $form->labelEx($model,'time_end'); ?>
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" placeholder="<?php echo date('d.m.Y'); ?>" class="form-control" id="end-date" name="d_end"/>
+                    <?php echo $form->error($model,'time_end'); ?>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" placeholder="<?php echo date('H:i'); ?>" class="form-control" id="end-time" name="t_end"/>
+                </div>
 
-	    <?php $this->renderPartial('//_shared/_location_form', array('form'=>$form, 'locationModel'=>$locationModel)); ?>
+                <?php $this->renderPartial('//_shared/_location_form', array('form'=>$form, 'locationModel'=>$locationModel)); ?>
+            </div>
+        </div>
     </div>
 
 	<?php
