@@ -73,6 +73,13 @@ class PostController extends Controller
 			$model->attributes=$_POST['Post'];
 			$model->user_id = Yii::app()->user->id;
 			$model->date = date('Y-m-d h:i:s');
+			$picture_file = CUploadedFile::getInstanceByName('photo');
+			if($picture_file)
+			{
+				$picture_name = $picture_file->name;
+				$picture_file->SaveAs(Yii::getPathOfAlias('webroot').'/img/blog/'. $picture_name);
+			}
+			$model->image = $picture_name;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -97,6 +104,13 @@ class PostController extends Controller
 		if(isset($_POST['Post']))
 		{
 			$model->attributes=$_POST['Post'];
+			$picture_file = CUploadedFile::getInstanceByName('photo');
+			if($picture_file)
+			{
+				$picture_name = $picture_file->name;
+				$picture_file->SaveAs(Yii::getPathOfAlias('webroot').'/img/blog/'. $picture_name);
+			}
+			$model->image = ($picture_file)? $picture_name : $model->image;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

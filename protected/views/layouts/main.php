@@ -40,7 +40,7 @@
 				<?php $this->widget('zii.widgets.CMenu',array(
 					'htmlOptions'=>array('class' => "nav navbar-nav navbar-right",),
 					'items'=>array(
-						array('label'=>'Ponudi pomoć', 'url'=>array('/help/create'), 'visible'=>Yii::app()->user->checkAccess("ponudi_pomoc")),
+						array('label'=>'Ponudi pomoć', 'url'=>array('/help/create'), 'visible'=>!Yii::app()->user->haveHelp()),
 						array('label'=>'Akcije', 'url'=>array('/action/index')),
                         array('label'=>'Poplave <i class="glyphicon glyphicon-bullhorn"></i>', 'url'=>array('/site/vazne_informacije'), 'linkOptions' => array('class' => 'menu-highlight')),
                         array('label'=>'Blog', 'url'=>array('/site/vijesti')),
@@ -49,7 +49,7 @@
                         array('label'=> Yii::app()->session['fullname'] . ' <i class="caret"></i>', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest,
                             'items' => array(
                                 array('label'=>'Moje akcije', 'url'=>array('action/moje_akcije')),
-                                array('label'=>'Uredi profil', 'url'=>array('/help/update/','id'=>Yii::app()->session['id']),'visible'=>!Yii::app()->user->checkAccess("ponudi_pomoc")),
+                                array('label'=>'Uredi profil', 'url'=>array('/help/update/','id'=>Yii::app()->session['id']),'visible'=>!Yii::app()->user->haveHelp()),
                                 array('label'=>'Uredi blog', 'url'=>array('/post/admin'),'visible'=>Yii::app()->user->checkAccess("admin")),
                                 array('label'=>'', 'url'=>'', 'itemOptions' => array('class' => 'divider')),
                                 array('label'=>'Odjavi me', 'url'=>array('/site/logout')),
