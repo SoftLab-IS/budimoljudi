@@ -9,11 +9,7 @@
         <h1 class="row">
             <span class="col-sm-10"><?php echo $model->title; ?></span>
 
-            <?php if($model->user_id == Yii::app()->user->id): ?>
-                <div class="col-sm-2 text-right">
-                    <?php echo CHtml::link('Izmjenite akciju', array('action/update', 'id' => $model->id), array('class' => 'btn btn-default')); ?>
-                </div>
-            <?php endif; ?>
+
         </h1>
     </header>
 </div>
@@ -50,6 +46,8 @@
                 Prijavljeni ste na ovu akciju
             </p>
         <?php
+        elseif($model->user_id == Yii::app()->user->id):
+	         echo CHtml::link('Izmjenite akciju', array('action/update', 'id' => $model->id), array('class' => 'btn btn-default'));
         elseif(!Yii::app()->user->haveHelp()):
 	        echo CHtml::link('Napravi ', array('help/create'), array('class'=>'btn btn-success'));
         else:

@@ -129,8 +129,10 @@ class ActionController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		$this->layout = 'main';
 		$model=$this->loadModel($id);
-		$locationModel = Location::model()->findByPk($model->id);
+		$locationModel = Location::model()->findByPk($model->Location_id);
+		$userModel = User::model()->findByPk(Yii::app()->user->id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -145,6 +147,7 @@ class ActionController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 			'locationModel'=>$locationModel,
+			'userModel'=>$userModel
 		));
 	}
 
@@ -234,9 +237,10 @@ class ActionController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Action::model()->findByPk($id);
-		if($model===null)
+		$model=Action::model()->findByPk((int)$id);
+		if($model===null) {
 			throw new CHttpException(404,'The requested page does not exist.');
+		}
 		return $model;
 	}
 
