@@ -35,6 +35,7 @@
 </div>
 
 <div class="col-sm-3 col-sm-push-1 text-center">
+	<?php if($model->time_end > date('Y-m-d H:i:s')): ?>
     <div class="action-cta-wrapper">
         <div class="action-participants">
             <?php if ($model->number_of_participants): ?>
@@ -49,10 +50,15 @@
                 Prijavljeni ste na ovu akciju
             </p>
         <?php
+        elseif(!Yii::app()->user->haveHelp()):
+	        echo CHtml::link('Napravi ', array('help/create'), array('class'=>'btn btn-success'));
         else:
             echo CHtml::link('Podrži akciju', array('action/ucesce', 'id'=>$model->id), array('class'=>'btn btn-success'));
         endif; ?>
     </div>
+	<?php else: ?>
+		<p>Akcija je završena.</p>
+	<?php endif; ?>
 </div>
 
 <div class="col-sm-12">

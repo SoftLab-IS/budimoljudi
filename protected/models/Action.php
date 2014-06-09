@@ -16,6 +16,7 @@
  * The followings are the available model relations:
  * @property User $user
  * @property Location $location
+ * @property ActionUsers[] $actionUsers
  */
 class Action extends CActiveRecord
 {
@@ -55,6 +56,7 @@ class Action extends CActiveRecord
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'location' => array(self::BELONGS_TO, 'Location', 'Location_id'),
+			'actionUsers' => array(self::HAS_MANY, 'ActionUsers', 'action_id'),
 		);
 	}
 

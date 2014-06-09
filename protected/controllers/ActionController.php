@@ -51,7 +51,11 @@ class ActionController extends Controller
 	 */
 	public function actionView($id)
 	{
-        $dataProvider=Action::model()->findAll(array('order'=>'id DESC'));
+		$condition = "time_end > :today";
+		$params = array(':today' => date('Y-m-d H:i:s'));
+		$order = 'id DESC';
+		$dataProvider = $this->getActions($condition, $params, $order);
+
 		$this->layout = 'main';
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
@@ -165,13 +169,12 @@ class ActionController extends Controller
 	{
         $this->layout = 'main';
 
-        $criteria = new CDbCriteria;
-        $criteria -> condition = "time_end < :today";
-        $criteria -> params = array(':today' => strtotime(date('Y-m-d H:i:s')));
-		$criteria -> order = 'id DESC';
-		$finishedActions = Action::model()->findAll($criteria);
-		$criteria -> condition = "time_end > :today";
-        $dataProvider = Action::model()->findAll($criteria);
+        $condition = "time_end < :today";
+        $params = array(':today' => date('Y-m-d H:i:s'));
+		$order = 'id DESC';
+		$finishedActions = $this->getActions($condition, $params, $order);
+		$condition = "time_end > :today";
+        $dataProvider = $this->getActions($condition, $params, $order);
 
 		$this->render('index',array(
 			'model' => $dataProvider,
@@ -179,20 +182,31 @@ class ActionController extends Controller
 		));
 	}
 
+
 	public function actionMoje_akcije()
 	{
 		$this->layout = 'main';
-		$criteria = new CDbCriteria;
-		$criteria -> condition = "time_end < :today AND user_id=:user";
-		$criteria -> params = array(':today' => strtotime(date('Y-m-d H:i:s')),':user'=>Yii::app()->user->id);
-		$criteria -> order = 'id DESC';
-		$finishedActions = Action::model()->findAll($criteria);
-		$criteria -> condition = "time_end > :today AND user_id=:user";
-		$dataProvider = Action::model()->findAll($criteria);
 
-		$this->render('index',array(
+		$condition = "time_end < :today AND user_id=:user";
+		$params = array(':today' => date('Y-m-d H:i:s'),':user'=>Yii::app()->user->id);
+		$order = 'id DESC';
+		$finishedActions = $this->getActions($condition, $params, $order);
+		$condition = "time_end > :today AND user_id=:user";
+		$dataProvider = $this->getActions($condition, $params, $order);
+
+
+		$with = 'actionUsers';
+		$condition = "time_end > :today AND actionUsers.user_id=:user";
+		$params = array(':today' => date('Y-m-d H:i:s'),':user'=>Yii::app()->user->id);
+		$order = 't.id DESC';
+		$podrzaneAkcije = $this->getActions($condition, $params, $order, $with);
+		$condition = "time_end < :today AND actionUsers.user_id=:user";
+		$zavrsenePodrzaneAkcije = $this->getActions($condition, $params, $order, $with);
+		$this->render('moje_akcije',array(
 			'model'=>$dataProvider,
 			'finishedActions' => $finishedActions,
+			'podrzaneAkcije' => $podrzaneAkcije,
+			'zavrsenePodrzaneAkcije' => $zavrsenePodrzaneAkcije,
 		));
 	}
 
@@ -275,4 +289,15 @@ class ActionController extends Controller
             'model' => $action,
         ));
     }
+
+
+	public function getActions($condition, $params, $order, $with = '') {
+		$criteria = new CDbCriteria;
+		if($with) $criteria -> with = $with;
+		$criteria -> condition = $condition;
+		$criteria -> params = $params;
+		$criteria -> order = $order;
+		$actions = Action::model()->findAll($criteria);
+		return $actions;
+	}
 }
