@@ -88,12 +88,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
-        'meta' => array(
-            'title' => 'Budimo Ljudi - Pomozimo onima kojima je pomoć potrebna',
-            'description' => 'Servis za organizovanje volonterskih akcija pomoći ugroženom stanovništvu',
-            'keywords' => 'volonter, pomoc, humanost, akcija pomoci',
-            'image' => 'social-thumb.jpg',
-            'url' => 'http://budimoljudi.com',
-        )
+
 	),
 );
