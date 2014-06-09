@@ -71,4 +71,14 @@ class WebUser extends CWebUser
 			return false;
 		return true;
 	}
+	public function haveAction() {
+		if (empty($this->id)) {
+			// Not identified => no rights
+			return false;
+		}
+		$role = $this->getState("roles");
+		if($role === User::USER_ROLE_VOLONTER)
+			return false;
+		return true;
+	}
 }

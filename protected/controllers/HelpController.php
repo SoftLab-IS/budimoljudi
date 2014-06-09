@@ -71,7 +71,7 @@ class HelpController extends Controller
 		if(Yii::app()->user->isGuest and isset($_POST['User'])) {
 			$userModel->attributes = $_POST['User'];
 			$userModel->type = User::USER_ROLE_VOLONTER;
-			$this->setState('roles', $userModel->type);
+			Yii::app()->user->setState('roles', $userModel->type);
 			$userModel->password = ($userModel->password)? md5($userModel->password) : null;
 			$userModel->passwordRepeat = ($userModel->passwordRepeat)? md5($userModel->passwordRepeat) : null;
 			$valid =$userModel->validate();

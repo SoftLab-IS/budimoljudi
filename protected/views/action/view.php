@@ -9,11 +9,7 @@
         <h1 class="row">
             <span class="col-sm-10"><?php echo $model->title; ?></span>
 
-            <?php if($model->user_id == Yii::app()->user->id): ?>
-                <div class="col-sm-2 text-right">
-                    <?php echo CHtml::link('Izmjenite akciju', array('action/update', 'id' => $model->id), array('class' => 'btn btn-default')); ?>
-                </div>
-            <?php endif; ?>
+
         </h1>
     </header>
 </div>
@@ -35,6 +31,7 @@
 </div>
 
 <div class="col-sm-3 col-sm-push-1 text-center">
+	<?php if($model->time_end > date('Y-m-d H:i:s')): ?>
     <div class="action-cta-wrapper">
         <div class="action-participants">
             <?php if ($model->number_of_participants): ?>
@@ -49,10 +46,17 @@
                 Prijavljeni ste na ovu akciju
             </p>
         <?php
+        elseif($model->user_id == Yii::app()->user->id):
+	         echo CHtml::link('Izmjenite akciju', array('action/update', 'id' => $model->id), array('class' => 'btn btn-default'));
+        elseif(!Yii::app()->user->haveHelp()):
+	        echo CHtml::link('Napravi ', array('help/create'), array('class'=>'btn btn-success'));
         else:
             echo CHtml::link('Podrži akciju', array('action/ucesce', 'id'=>$model->id), array('class'=>'btn btn-success'));
         endif; ?>
     </div>
+	<?php else: ?>
+		<p>Akcija je završena.</p>
+	<?php endif; ?>
 </div>
 
 <div class="col-sm-12">

@@ -29,7 +29,11 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$akcije = Action::model()->findAll(array('order'=>'id DESC'));
+		$criteria = new CDbCriteria;
+		$criteria->condition = "time_end > :today";
+		$criteria->params = array(':today' => date('Y-m-d H:i:s'));
+		$criteria->order = 'id DESC';
+		$akcije = Action::model()->findAll($criteria);
 		$vijesti = Post::model()->findAll(array('order'=>'id DESC'));
 		$this->render('index',array(
 			'akcije' => $akcije,
