@@ -20,4 +20,15 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+
+    /**
+     * @var array meta data
+     */
+    public $meta = array(
+        'title' => 'Budimo Ljudi - Pomozimo onima kojima je pomoć potrebna',
+        'description' => 'Servis za organizovanje volonterskih akcija pomoći ugroženom stanovništvu',
+        'keywords' => 'volonter, pomoc, humanost, akcija pomoci',
+        'image' => 'social-thumb.jpg',
+        'url' => 'http://budimoljudi.com',
+    );
 }

@@ -6,30 +6,30 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Budimo Ljudi</title>
+	<title><?php echo $this->pageTitle; ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- for Google -->
-    <meta name="description" content="<?php echo Yii::app()->params->meta['description']; ?>" />
-    <meta name="keywords" content="<?php echo Yii::app()->params->meta['keywords']; ?>" />
+    <meta name="description" content="<?php echo $this->meta['description']; ?>" />
+    <meta name="keywords" content="<?php echo $this->meta['keywords']; ?>" />
 
     <meta name="author" content="" />
     <meta name="copyright" content="2014" />
     <meta name="application-name" content="Budimo Ljudi" />
 
     <!-- for Facebook -->
-    <meta property="og:title" content="<?php echo Yii::app()->params->meta['title']; ?>" />
+    <meta property="og:title" content="<?php echo $this->meta['title']; ?>" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="<?php echo Yii::app()->getBaseUrl(true) . '/img/' . Yii::app()->params->meta['image']; ?>" />
-    <meta property="og:url" content="<?php echo Yii::app()->params->meta['url']; ?>" />
-    <meta property="og:description" content="<?php echo Yii::app()->params->meta['description']; ?>" />
+    <meta property="og:image" content="<?php echo Yii::app()->getBaseUrl(true) . '/img/' . $this->meta['image']; ?>" />
+    <meta property="og:url" content="<?php echo $this->meta['url']; ?>" />
+    <meta property="og:description" content="<?php echo $this->meta['description']; ?>" />
     <meta property="article:publisher" content="http://www.facebook.com/humaniljudi" />
 
     <!-- for Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="<?php echo Yii::app()->params->meta['title']; ?>" />
-    <meta name="twitter:description" content="<?php echo Yii::app()->params->meta['description']; ?>" />
-    <meta name="twitter:image" content="<?php echo Yii::app()->getBaseUrl(true) . '/img/' . Yii::app()->params->meta['image']; ?>" />
+    <meta name="twitter:title" content="<?php echo $this->meta['title']; ?>" />
+    <meta name="twitter:description" content="<?php echo $this->meta['description']; ?>" />
+    <meta name="twitter:image" content="<?php echo Yii::app()->getBaseUrl(true) . '/img/' . $this->meta['image']; ?>" />
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -113,14 +113,17 @@
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/vendor/iCheck/icheck.min.js"></script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/main.js"></script>
 
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<!-- Google Tag Manager -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-52WJKV" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <script>
-	(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-		e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-		e.src='//www.google-analytics.com/analytics.js';
-		r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-	ga('create','UA-XXXXX-X');ga('send','pageview');
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-52WJKV');
 </script>
+<!-- End Google Tag Manager -->
 </body>
 </html>
