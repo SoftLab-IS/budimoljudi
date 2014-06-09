@@ -137,9 +137,16 @@ class ActionController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Action']))
+		if(isset($_POST['Action'], $_POST['Location']))
 		{
+			$locationModel->attributes = $_POST['Location'];
+			if($locationModel->validate())
+				$locationModel->save(false);
+
 			$model->attributes=$_POST['Action'];
+			$model->time_start = date('Y-m-d H:i:s', strtotime($_POST['d_start'] . ' ' . $_POST['t_start']));
+			$model->time_end = date('Y-m-d H:i:s', strtotime($_POST['d_end'] . ' ' . $_POST['t_end']));
+			$model->Location_id = $locationModel->id;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
