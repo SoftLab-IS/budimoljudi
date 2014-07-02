@@ -9,13 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Helptypes', 'url'=>array('index')),
-	array('label'=>'Create Helptypes', 'url'=>array('create')),
-	array('label'=>'View Helptypes', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Helptypes', 'url'=>array('admin')),
+
+	array('label'=>'Kriraj novi tip pomoći', 'url'=>array('create')),
+	array('label'=>'Uređuj tipove pomoći', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Helptypes <?php echo $model->id; ?></h1>
+<h1>Izmjeni tip pomoći <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

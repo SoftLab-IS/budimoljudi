@@ -8,11 +8,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Helptypes', 'url'=>array('index')),
-	array('label'=>'Manage Helptypes', 'url'=>array('admin')),
+	array('label'=>'Uređuj tipove pomoći', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Helptypes</h1>
+<h1>Dodaj novi</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

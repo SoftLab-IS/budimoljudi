@@ -30,6 +30,7 @@ class Helptypes extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'length', 'max'=>45),
+			array('name', 'required'),
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
