@@ -29,6 +29,7 @@ class State extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'length', 'max'=>120),
+			array('name', 'required'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name', 'safe', 'on'=>'search'),
@@ -54,7 +55,7 @@ class State extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'name' => 'Ime države',
 		);
 	}
 

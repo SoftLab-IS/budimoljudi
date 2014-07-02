@@ -72,6 +72,7 @@
                                 array('label'=>'Moje akcije', 'url'=>array('action/moje_akcije')),
                                 array('label'=>'Uredi profil', 'url'=>array('/help/update/','id'=>Yii::app()->session['id']),'visible'=>Yii::app()->user->haveHelp()),
                                 array('label'=>'Uredi blog', 'url'=>array('/post/admin'),'visible'=>Yii::app()->user->checkAccess("admin")),
+                                array('label'=>'Uredi lokacije', 'url'=>array('/state/admin'),'visible'=>Yii::app()->user->checkAccess("admin")),
                                 array('label'=>'', 'url'=>'', 'itemOptions' => array('class' => 'divider')),
                                 array('label'=>'Odjavi me', 'url'=>array('/site/logout')),
                             ),

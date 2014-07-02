@@ -30,7 +30,7 @@ class Region extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('state_id', 'required'),
+			array('state_id, name', 'required'),
 			array('state_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			// The following rule is used by search().
@@ -59,7 +59,7 @@ class Region extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Ime',
+			'name' => 'Ime Regije',
 			'state_id' => 'Drzava',
 		);
 	}

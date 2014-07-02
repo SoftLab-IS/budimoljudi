@@ -9,10 +9,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List State', 'url'=>array('index')),
-	array('label'=>'Create State', 'url'=>array('create')),
-	array('label'=>'View State', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage State', 'url'=>array('admin')),
+	array('label'=>'Dodaj Državu', 'url'=>array('create')),
+	array('label'=>'Uređuj države', 'url'=>array('admin')),
 );
 ?>
 

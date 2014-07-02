@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create State', 'url'=>array('create')),
-	array('label'=>'Manage State', 'url'=>array('admin')),
+	array('label'=>'Dodaj Državu', 'url'=>array('create')),
+	array('label'=>'Uređuj Države', 'url'=>array('admin')),
 );
 ?>
 

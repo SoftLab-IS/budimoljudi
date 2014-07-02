@@ -8,11 +8,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Region', 'url'=>array('index')),
-	array('label'=>'Manage Region', 'url'=>array('admin')),
+	array('label'=>'Uređuj Regije', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Region</h1>
+<h1>Unesi Regiju</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

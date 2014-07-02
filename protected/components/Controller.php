@@ -14,6 +14,11 @@ class Controller extends CController
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
 	 */
 	public $menu=array();
+	public $locationMenu=array(
+		array('label'=>'Države', 'url'=>array('state/admin')),
+		array('label'=>'Regije', 'url'=>array('region/admin')),
+		array('label'=>'Gradovi', 'url'=>array('city/admin')),
+		);
 	/**
 	 * @var array the breadcrumbs of the current page. The value of this property will
 	 * be assigned to {@link CBreadcrumbs::links}. Please refer to {@link CBreadcrumbs::links}
