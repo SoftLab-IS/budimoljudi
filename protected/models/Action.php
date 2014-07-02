@@ -56,7 +56,7 @@ class Action extends CActiveRecord
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'location' => array(self::BELONGS_TO, 'Location', 'Location_id'),
-			'actionUsers' => array(self::HAS_MANY, 'ActionUsers', 'action_id'),
+			'actionUsers' => array(self::HAS_MANY, 'Actionusers', 'action_id'),
 		);
 	}
 
