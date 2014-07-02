@@ -11,8 +11,15 @@
 			'ajax' => array(
 				'type'=>'POST',
 				'url'=>Yii::app()->createUrl('region/loadregions'), //or $this->createUrl('loadcities') if '$this' extends CController
-				'update'=>'#Location_region_id', //or 'success' => 'function(data){...handle the data in the way you want...}',
+				'update'=>'#Location_region_id',
 				'data'=>array('state_id'=>'js:this.value'),
+				'success'=> 'function(data) {
+							$("#Location_region_id").empty();
+                            $("#Location_region_id").append(data);
+                            $("#Location_city_ptt").empty();
+                            $("#Location_city_ptt").append("<option>Svi gradovi</option>");
+                 } ',
+
 			)));
 	?>
 	<?php echo $form->error($locationModel,'state_id', array('class'=>'alert alert-danger')); ?>
@@ -22,8 +29,8 @@
 </div>
 <div class="col-md-9">
 	<?php
-	$list = CHtml::listData(Region::model()->findAllByAttributes(array('state_id'=>$locationModel->state_id)), 'id', 'name');
-	echo CHtml::dropDownList('Location[region_id]', $locationModel->region_id, $list,
+
+	echo CHtml::dropDownList('Location[region_id]', $locationModel->region_id, array(),
 		array(
 			'class'=>'form-control',
 			'prompt'=>'Sve regije',
@@ -32,6 +39,10 @@
 				'url'=>Yii::app()->createUrl('city/loadcities'), //or $this->createUrl('loadcities') if '$this' extends CController
 				'update'=>'#Location_city_ptt', //or 'success' => 'function(data){...handle the data in the way you want...}',
 				'data'=>array('region_id'=>'js:this.value'),
+				'success'=> 'function(data) {
+							$("#Location_city_ptt").empty();
+                            $("#Location_city_ptt").append(data);
+                 } ',
 			)));
 	?>
 	<?php echo $form->error($locationModel,'region_id', array('class'=>'alert alert-danger')); ?>
@@ -41,8 +52,7 @@
 </div>
 <div class="col-md-9">
 	<?php
-	$list = CHtml::listData(City::model()->findAllByAttributes(array('region_id'=>$locationModel->region_id)), 'ptt', 'name');
-	echo CHtml::dropDownList('Location[city_ptt]', $locationModel->city_ptt, $list,
+	echo CHtml::dropDownList('Location[city_ptt]', $locationModel->city_ptt, array(),
 		array(
 			'class'=>'form-control',
 			'empty' => 'Svi gradovi'
